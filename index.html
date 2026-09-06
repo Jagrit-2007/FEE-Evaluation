@@ -3,130 +3,246 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FeeFlow — Considered Fashion</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+<title>Elossence | Premium Fashion Showcase</title>
+
+<!-- Favicon generated from the infinity ribbon logo -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 110'><path d='M20 55 C20 35, 45 35, 55 55 C65 75, 90 75, 90 55 C90 35, 65 35, 55 55 C45 75, 20 75, 20 55 Z' fill='none' stroke='%23C1877E' stroke-width='6'/></svg>">
+
+<!-- Linked Stylesheet -->
 <link rel="stylesheet" href="style.css">
-<style>
-  
-</style>
+
 </head>
 <body>
 
-  <!-- Header -->
-  <div class="header">
-    <a href="index.html" class="logo">FEEFLOW</a>
-    <div class="nav">
-      <a href="men.html">Men</a>
-      <a href="women.html">Women</a>
-      <a href="about.html">About</a>
-      <a href="signup.html">Sign up</a>
-    </div>
-  </div>
-
-  <!-- Hero -->
-  <div class="hero">
-    <a class="hero-half" href="men.html">
-      <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=800&q=80" alt="Men">
-      <div class="hero-text">
-        <h2>Men</h2>
-        <p>Shop now</p>
+  <!-- ===== INTRO ANIMATION ===== -->
+  <div id="ellosence-intro">
+    <div class="intro-inner">
+      <div class="infinity-wrap">
+        <svg viewBox="0 0 220 110" xmlns="http://www.w3.org/2000/svg">
+          <path class="infinity-path loop-right" d="M110,55 C160,15 210,15 210,55 C210,95 160,95 110,55 Z"/>
+          <path class="infinity-path loop-left" d="M110,55 C60,95 10,95 10,55 C10,15 60,15 110,55 Z"/>
+        </svg>
       </div>
-    </a>
-    <a class="hero-half" href="women.html">
-      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=80" alt="Women">
-      <div class="hero-text">
-        <h2>Women</h2>
-        <p>Shop now</p>
+      <div class="wordmark">
+        <span>e</span><span>l</span><span>o</span><span>s</span><span>s</span><span>e</span><span>n</span><span>c</span><span>e</span>
       </div>
-    </a>
-  </div>
-
-  <!-- Trending -->
-  <div class="section">
-    <h2>Trending</h2>
-    <div class="grid">
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=400&q=80" alt="Wool coat">
-        <div class="name">Tailored wool coat</div>
-        <div class="price">$420</div>
-      </a>
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80" alt="Silk dress">
-        <div class="name">Silk column dress</div>
-        <div class="price">$310</div>
-      </a>
-      <a class="product" href="men.html">
-        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&q=80" alt="Leather boot">
-        <div class="name">Leather ankle boot</div>
-        <div class="price">$275</div>
-      </a>
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=400&q=80" alt="Scarf">
-        <div class="name">Cashmere scarf</div>
-        <div class="price">$140</div>
-      </a>
     </div>
   </div>
+  <!-- ===== END INTRO ===== -->
 
-  <!-- New Arrivals -->
-  <div class="section grey">
-    <h2>New arrivals</h2>
-    <div class="grid">
-      <a class="product" href="men.html">
-        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80" alt="Blazer">
-        <div class="name">Structured blazer</div>
-        <div class="price">$385</div>
-      </a>
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a13d77?w=400&q=80" alt="Skirt">
-        <div class="name">Pleated midi skirt</div>
-        <div class="price">$220</div>
-      </a>
-      <a class="product" href="men.html">
-        <img src="https://images.unsplash.com/photo-1576871337622-98d48d1cf531?w=400&q=80" alt="Sweater">
-        <div class="name">Merino sweater</div>
-        <div class="price">$165</div>
-      </a>
-      <a class="product" href="men.html">
-        <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&q=80" alt="Loafer">
-        <div class="name">Suede loafer</div>
-        <div class="price">$260</div>
-      </a>
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo-area">
+        <svg class="logo-svg" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 55 C20 35, 45 35, 55 55 C65 75, 90 75, 90 55 C90 35, 65 35, 55 55 C45 75, 20 75, 20 55 Z" fill="none" stroke="#C1877E" stroke-width="2"/>
+        </svg>
+        <span class="logo-text">elossence</span>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Heritage</a>
+        <a href="#">Atelier</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button>Login</button>
+        <button class="dark">Sign Up</button>
+      </div>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
+  </header>
+
+  <!-- Cinematic Main Hero -->
+  <section class="hero-full">
+    <div class="cinematic-overlay"></div>
+    <div class="cinematic-content">
+      <h1>Elevate Your Style, <br><i>Express Your You.</i></h1>
+      <p>Discover timeless pieces and modern essentials crafted for every moment of your life.</p>
+      <a href="#" class="btn-light">View Showcase</a>
+    </div>
+  </section>
+
+  <!-- Editorial Spacer 1 -->
+  <section class="editorial-statement">
+    <h2 class="serif">Defining the Modern Epoch</h2>
+    <p>Elossence curates a visual poetry of garments. Every thread weaves a narrative of elegance, designed not just to be worn, but to be experienced. We invite you to explore the intersection of classical tailoring and contemporary silhouette.</p>
+  </section>
+
+  <!-- Grand Heritage Collection -->
+  <section class="heritage-section">
+    <div class="cinematic-overlay"></div>
+    <div class="cinematic-content">
+      <h2>The Heritage Collection</h2>
+      <p>An opulent celebration of slow fashion, rooted in tradition and tailored for the modern silhouette. Deep hues, rich textures, and timeless craftsmanship.</p>
+      <a href="#" class="btn-light">Discover The Magic</a>
+    </div>
+  </section>
+
+  <!-- Editorial Spacer 2 -->
+  <section class="editorial-statement" style="padding-bottom: 4rem;">
+    <h2 class="serif">The Duality of Form</h2>
+    <p>Exploring the delicate balance between structural mastery and fluid grace. Two distinct collections, unified by an uncompromising dedication to the art of dress.</p>
+  </section>
+
+  <!-- Redesigned Men & Women Editorial Showcase (High Fashion Images) -->
+  <section class="container collections">
+    <div class="collection-block">
+      <div class="collection-img-wrap">
+        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=80" alt="Men Collection">
+      </div>
+      <h3 class="serif">The Men's Edit</h3>
+      <p>Sharp tailoring and brooding silhouettes for the modern gentleman.</p>
+      <a href="#" class="link-arrow-dark">Explore Collection</a>
+    </div>
+    
+    <div class="collection-block">
+      <div class="collection-img-wrap">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" alt="Women Collection">
+      </div>
+      <h3 class="serif">The Women's Edit</h3>
+      <p>Delicate fluidity meets architectural structure.</p>
+      <a href="#" class="link-arrow-dark">Explore Collection</a>
+    </div>
+  </section>
+
+  <!-- Dark Editorial Interlude -->
+  <section class="interlude">
+    <h2 class="serif">"True luxury is not just in what you wear, but in how it makes you feel. A garment should act as a second skin, tailored to the contours of your spirit."</h2>
+    <p>— The Elossence Atelier</p>
+  </section>
+
+  <!-- Trending Now -->
+  <section class="trending container">
+    <h2 class="section-title serif">Trending Now</h2>
+    <div class="grid-4">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=600&q=80" alt="Trending 1">
+        <div class="product-info">
+          <h4 class="serif">Noir Structured Blazer</h4>
+          <p>Archival Silhouette</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1616428780775-db3288f346b9?auto=format&fit=crop&w=600&q=80" alt="Trending 2">
+        <div class="product-info">
+          <h4 class="serif">Organza Silk Wrap</h4>
+          <p>Bespoke Tailoring</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1603217192634-61068e4d4bf9?auto=format&fit=crop&w=600&q=80" alt="Trending 3">
+        <div class="product-info">
+          <h4 class="serif">Monochrome Overcoat</h4>
+          <p>Winter '26 Preview</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=600&q=80" alt="Trending 4">
+        <div class="product-info">
+          <h4 class="serif">Linen Resort Suit</h4>
+          <p>Mediterranean Series</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <div style="background: var(--bg-alt);">
+    <section class="container values">
+      <h2 class="section-title serif">The Elossence Ethos</h2>
+      <div class="grid-3">
+        <div class="value-item">
+          <h4 class="serif">Finest Materials</h4>
+          <p>We source only premium, sustainable fabrics that feel as luxurious as they look.</p>
+        </div>
+        <div class="value-item">
+          <h4 class="serif">Timeless Design</h4>
+          <p>Pieces crafted not for a single season, but to remain staples in your wardrobe forever.</p>
+        </div>
+        <div class="value-item">
+          <h4 class="serif">Ethical Craftsmanship</h4>
+          <p>Every garment is produced with care, respecting both the artisans and the environment.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Editor's Picks -->
-  <div class="section">
-    <h2>Editor's picks</h2>
-    <div class="grid">
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80" alt="Trench coat">
-        <div class="name">Trench coat</div>
-        <div class="price">$460</div>
-      </a>
-      <a class="product" href="men.html">
-        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80" alt="Linen shirt">
-        <div class="name">Linen shirt</div>
-        <div class="price">$95</div>
-      </a>
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Trouser">
-        <div class="name">Wide-leg trouser</div>
-        <div class="price">$180</div>
-      </a>
-      <a class="product" href="women.html">
-        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&q=80" alt="Necklace">
-        <div class="name">Gold-tone necklace</div>
-        <div class="price">$120</div>
-      </a>
+  <!-- Newsletter -->
+  <section class="container newsletter">
+    <h2 class="serif">Join the Inner Circle</h2>
+    <p>Subscribe to receive updates on exclusive runway releases, styling inspirations, and private atelier viewings.</p>
+    <div class="form-group">
+      <input type="email" placeholder="Enter your email address">
+      <button>Subscribe</button>
     </div>
-  </div>
+  </section>
 
   <!-- Footer -->
-  <div class="footer">
-    <div class="logo">FEEFLOW</div>
-    <p>© 2026 FeeFlow. All rights reserved.</p>
-  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-area" style="margin-bottom: 1rem;">
+            <svg class="logo-svg" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 55 C20 35, 45 35, 55 55 C65 75, 90 75, 90 55 C90 35, 65 35, 55 55 C45 75, 20 75, 20 55 Z" fill="none" stroke="#C1877E" stroke-width="2"/>
+            </svg>
+            <span class="logo-text">elossence</span>
+          </div>
+          <p>Elevating everyday style with delicate, luxurious essentials designed for the modern aesthetic.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Discover</h4>
+          <ul>
+            <li><a href="#">Heritage Collection</a></li>
+            <li><a href="#">Women's Showcase</a></li>
+            <li><a href="#">Men's Showcase</a></li>
+            <li><a href="#">Editorials</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Maison</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Ateliers</a></li>
+            <li><a href="#">Craftsmanship</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Client Services</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Bespoke Appointments</a></li>
+            <li><a href="#">Garment Care</a></li>
+            <li><a href="#">Private Viewing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Elossence. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
+  <!-- Vanilla JS for Hamburger Menu -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
 </body>
 </html>
