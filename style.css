@@ -79,24 +79,55 @@ a:hover {
   to { transform: scale(1.05); opacity: 0; }
 }
 
-.infinity-wrap svg {
-  width: 120px;
-  height: auto;
-  overflow: visible;
+/* ===== CSS-ONLY RIBBON MARK (replaces the SVG infinity path) =====
+   Two overlapping rings stand in for the drawn infinity curve, since a
+   true crossing ribbon shape needs SVG paths and can't be built with
+   plain CSS borders/border-radius. */
+.infinity-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.infinity-path {
-  fill: none;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke: var(--ribbon);
-  stroke-width: 1.5; /* Delicately thin line */
-  stroke-dasharray: 283;
-  stroke-dashoffset: 283;
-  animation: draw-infinity 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+.logo-mark {
+  display: flex;
+  align-items: center;
 }
 
-.loop-right, .loop-left { animation-delay: 0.2s; }
+.logo-mark .loop {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--rose);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.logo-mark .loop-right {
+  margin-left: -9px;
+}
+
+.logo-mark-lg .loop {
+  width: 56px;
+  height: 56px;
+  border-width: 2px;
+  opacity: 0;
+  transform: scale(0.6);
+  animation: loop-in 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.logo-mark-lg .loop-left {
+  animation-delay: 0.15s;
+}
+
+.logo-mark-lg .loop-right {
+  margin-left: -22px;
+  animation-delay: 0.35s;
+}
+
+@keyframes loop-in {
+  to { opacity: 1; transform: scale(1); }
+}
 
 .wordmark {
   font-family: "Cormorant Garamond", serif;
@@ -131,9 +162,6 @@ a:hover {
 @keyframes letter-in { 
   to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } 
 }
-@keyframes draw-infinity { 
-  to { stroke-dashoffset: 0; } 
-}
 @keyframes intro-fade-out { 
   to { opacity: 0; visibility: hidden; pointer-events: none; } 
 }
@@ -160,8 +188,6 @@ header {
   align-items: center;
   gap: 1rem;
 }
-
-.logo-svg { width: 40px; height: 40px; }
 
 .logo-text {
   font-family: 'Cormorant Garamond', serif;
@@ -596,8 +622,6 @@ footer {
   font-size: 0.85rem;
   color: rgba(251, 243, 239, 0.5);
 }
-
-.footer-brand svg path { stroke: var(--rose); }
 
 /* Responsive Design */
 @media (max-width: 992px) {
