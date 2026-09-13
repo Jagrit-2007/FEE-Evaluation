@@ -8,23 +8,32 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ===== INTRO ANIMATION ===== -->
+  
+  <!-- Intro animation : start -->
   <div id="ellosence-intro">
     <div class="intro-inner">
+
+      <!-- Infinity symbol -->
       <div class="infinity-wrap">
         <div class="logo-mark logo-mark-lg">
           <span class="loop loop-left"></span>
           <span class="loop loop-right"></span>
         </div>
       </div>
+
+      <!-- Breaking each element (the letter of brand) by span so that we can animate it -->
       <div class="wordmark">
         <span>e</span><span>l</span><span>o</span><span>s</span><span>s</span><span>e</span><span>n</span><span>c</span><span>e</span>
       </div>
+
     </div>
   </div>
-  <!-- ===== END INTRO ===== -->
+  <!-- Intro animation : end -->
 
   <header>
+
+    <!-- space seperate two different classes for this block
+    . container handles the general styles in overall code & .nav-wrapper handles specific code  -->
     <div class="container nav-wrapper">
       <div class="logo-area">
         <div class="logo-mark">
@@ -34,25 +43,28 @@
         <span class="logo-text">elossence</span>
       </div>
       
+      <!-- Navigation bar -->
       <nav class="nav-links">
         <a href="#">Home</a>
-        <a href="#">Men</a>
-        <a href="#">Women</a>
-        <a href="#">Heritage</a>
-        <a href="#">Atelier</a>
+        <a href="men.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="about.html">About Us</a>
       </nav>
 
+      <!-- Login & sign up -->
       <div class="nav-actions">
         <button>Login</button>
         <button class="dark">Sign Up</button>
       </div>
 
+      <!-- Hamburger -->
       <div class="hamburger">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
+
   </header>
 
   <!-- Cinematic Main Hero -->
@@ -61,11 +73,11 @@
     <div class="cinematic-content">
       <h1>Elevate Your Style, <br><i>Express Your You.</i></h1>
       <p>Discover timeless pieces and modern essentials crafted for every moment of your life.</p>
-      <a href="#" class="btn-light">View Showcase</a>
+      <a href="#" class="btn-light">VIEW SHOWCASE</a>
     </div>
   </section>
 
-  <!-- Editorial Spacer 1 -->
+  <!-- Spacer 1 -->
   <section class="editorial-statement">
     <h2 class="serif">Defining the Modern Epoch</h2>
     <p>Elossence curates a visual poetry of garments. Every thread weaves a narrative of elegance, designed not just to be worn, but to be experienced. We invite you to explore the intersection of classical tailoring and contemporary silhouette.</p>
@@ -73,7 +85,7 @@
 
   <!-- Grand Heritage Collection -->
   <section class="heritage-section">
-    <div class="cinematic-overlay"></div>
+    <div class="cinematic-overlay"></div> 
     <div class="cinematic-content">
       <h2>The Heritage Collection</h2>
       <p>An opulent celebration of slow fashion, rooted in tradition and tailored for the modern silhouette. Deep hues, rich textures, and timeless craftsmanship.</p>
@@ -81,26 +93,29 @@
     </div>
   </section>
 
-  <!-- Editorial Spacer 2 -->
+  <!-- Spacer 2 -->
   <section class="editorial-statement" style="padding-bottom: 4rem;">
     <h2 class="serif">The Duality of Form</h2>
     <p>Exploring the delicate balance between structural mastery and fluid grace. Two distinct collections, unified by an uncompromising dedication to the art of dress.</p>
   </section>
 
-  <!-- Redesigned Men & Women Editorial Showcase (High Fashion Images) -->
+  <!-- Men & women sections -->
+
+  <!-- Men section -->
   <section class="container collections">
     <div class="collection-block">
       <div class="collection-img-wrap">
-        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=1000&q=80" alt="Men Collection">
+        <img src="images/menSection.jpg" alt="Men Collection">
       </div>
       <h3 class="serif">The Men's Edit</h3>
       <p>Sharp tailoring and brooding silhouettes for the modern gentleman.</p>
       <a href="#" class="link-arrow-dark">Explore Collection</a>
     </div>
     
+    <!-- Women section -->
     <div class="collection-block">
       <div class="collection-img-wrap">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=80" alt="Women Collection">
+        <img src="images/womenSection.webp" alt="Women Collection">
       </div>
       <h3 class="serif">The Women's Edit</h3>
       <p>Delicate fluidity meets architectural structure.</p>
@@ -119,28 +134,28 @@
     <h2 class="section-title serif">Trending Now</h2>
     <div class="grid-4">
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1495385794356-15371f348c31?auto=format&fit=crop&w=600&q=80" alt="Trending 1">
+        <img src="images/noirBlazer.webp" alt="Trending 1">
         <div class="product-info">
           <h4 class="serif">Noir Structured Blazer</h4>
           <p>Archival Silhouette</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1616428780775-db3288f346b9?auto=format&fit=crop&w=600&q=80" alt="Trending 2">
+        <img src="images/organzaWrap.jpeg" alt="Trending 2">
         <div class="product-info">
           <h4 class="serif">Organza Silk Wrap</h4>
           <p>Bespoke Tailoring</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1603217192634-61068e4d4bf9?auto=format&fit=crop&w=600&q=80" alt="Trending 3">
+        <img src="images/longOverCoat.jpg" alt="Trending 3">
         <div class="product-info">
           <h4 class="serif">Monochrome Overcoat</h4>
           <p>Winter '26 Preview</p>
         </div>
       </div>
       <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1584273143981-41c073dfe8f8?auto=format&fit=crop&w=600&q=80" alt="Trending 4">
+        <img src="images/linenResortSuit.webp" alt="Trending 4">
         <div class="product-info">
           <h4 class="serif">Linen Resort Suit</h4>
           <p>Mediterranean Series</p>

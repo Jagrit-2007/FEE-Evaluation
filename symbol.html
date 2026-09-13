@@ -6,68 +6,34 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
-  :root{
-    --ivory: #FBF3EF;
-    --plum: #4B3230;
-    --plum-soft: #7A5450;
-    --rose: #C1877E;
-  }
+  /* --- THE SIMPLE OVERLAPPING CIRCLES LOGO --- */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-  * { box-sizing: border-box; }
-  
-  body {
-    margin: 0;
-    background: var(--ivory);
-    font-family: 'Cormorant Garamond', serif;
-    color: var(--plum);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+.simple-logo {
+  display: flex; /* Puts the circles side by side */
+}
 
-  .concept {
-    border: 1px solid rgba(75,50,48,0.15);
-    border-radius: 2px;
-    padding: 60px 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    background: #fff;
-  }
+.circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--rose); /* The color of the rings */
+  border-radius: 50%; /* This turns the square div into a perfect circle */
+}
 
-  .mark {
-    width: 130px;
-    height: 130px;
-    margin-bottom: 20px;
-  }
+.circle.overlap {
+  margin-left: -12px; /* This pulls the second circle left so they overlap */
+}
 
-  .wordB {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    letter-spacing: .42em;
-    color: var(--plum);
-    margin: 0;
-    padding-left: .42em;
-    text-transform: lowercase;
-  }
-
-  .label {
-    font-size: 15px;
-    letter-spacing: .08em;
-    color: var(--plum-soft);
-    font-style: italic;
-    margin: 18px 0 8px;
-  }
-
-  .why {
-    font-size: 15px;
-    color: var(--plum-soft);
-    line-height: 1.6;
-    margin-top: 14px;
-  }
+.logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  letter-spacing: 0.3em;
+  text-transform: lowercase;
+}
 </style>
 </head>
 <body>
