@@ -1,119 +1,635 @@
-    <!DOCTYPE html>
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Women's Edit | Elossence</title>
+
+<title>Elossence | The Women's Edit</title>
+
+<!-- Same base stylesheet as index.html -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Extra styles just for this page's lookbook grid -->
+<link rel="stylesheet" href="women.css">
+
 <style>
-  /* ===== INTERNAL CSS ===== */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
 
-  :root { --ivory: #FBF3EF; --plum: #4B3230; --plum-soft: #7A5450; --rose: #C1877E; --bg-alt: #f4eae4; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background-color: var(--ivory); color: var(--plum); font-family: 'Jost', sans-serif; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
-  a { text-decoration: none; color: inherit; transition: color 0.3s; }
-  a:hover { color: var(--rose); }
-  .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+/* =================================
+   LIGHT THEME FOR PAGE + GAPS
+   ================================= */
 
-  header { padding: 1.5rem 0; border-bottom: 1px solid rgba(75, 50, 48, 0.1); background: var(--ivory); }
-  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-  .logo-area { display: flex; align-items: center; gap: 1rem; }
-  
-  /* Original Index.html Logo Font */
-  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.3em; text-transform: lowercase; color: var(--plum); }
-  
-  .logo-mark { display: flex; align-items: center; }
-  .logo-mark .loop { width: 22px; height: 22px; border: 2px solid var(--rose); border-radius: 50%; }
-  .logo-mark .loop-right { margin-left: -9px; }
-  .nav-links { display: flex; gap: 2rem; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .nav-actions button { background: transparent; border: 1px solid var(--plum); color: var(--plum); padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 12px; text-transform: uppercase; cursor: pointer; }
-  .nav-actions button.dark { background: var(--plum); color: var(--ivory); }
+body {
+    background-color: #f5f1eb;
+}
 
-  /* Hero Section */
-  .hero-full { position: relative; width: 100%; height: 60vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
-  .cinematic-overlay { position: absolute; inset: 0; background: rgba(46, 35, 32, 0.45); z-index: 1; }
-  .cinematic-content { position: relative; z-index: 2; padding: 0 2rem; }
-  .cinematic-content h1 { font-size: 5rem; margin-bottom: 1rem; }
-  
-  /* Grid Section */
-  .trending { padding-top: 4rem; padding-bottom: 6rem; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-  .product-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 1.5rem; background-color: var(--bg-alt); transition: opacity 0.3s; }
-  .product-card:hover img { opacity: 0.85; }
-  .product-info { text-align: center; }
-  .product-info h4 { font-size: 1.3rem; margin-bottom: 0.4rem; }
-  .product-info p { color: var(--plum-soft); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; }
+/* The area between the images */
+.wf-grid {
+    background-color: #f5f1eb;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
 
-  @media(max-width: 992px) {
-    .grid-4 { grid-template-columns: 1fr; }
-    .cinematic-content h1 { font-size: 3.5rem; }
-  }
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    /* SPACE BETWEEN IMAGES */
+    gap: 25px;
+}
+
+
+/* =================================
+   IMAGE ALIGNMENT
+   ================================= */
+
+.wf-block {
+    width: 100%;
+    overflow: hidden;
+}
+
+.wf-block-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* =================================
+   TOP PICKS
+   ================================= */
+
+.wf-block-wide {
+    grid-column: 1 / 3;
+}
+
+.wf-block-wide .wf-block-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+
+/* =================================
+   HERO BACKGROUND
+   ================================= */
+
+.wf-hero {
+    background-color: #f5f1eb;
+}
+
+
+/* =================================
+   MOBILE
+   ================================= */
+
+@media (max-width: 768px) {
+
+    .wf-grid {
+        grid-template-columns: 1fr;
+        width: 92%;
+        gap: 20px;
+    }
+
+    .wf-block-wide {
+        grid-column: 1;
+    }
+
+    .wf-block-img,
+    .wf-block-wide .wf-block-img {
+        height: 450px;
+    }
+}
+
 </style>
+
 </head>
+
+
 <body>
 
-  <header>
+
+<!-- =================================
+     HEADER
+     ================================= -->
+
+<header>
+
     <div class="container nav-wrapper">
-      <div class="logo-area">
-        <div class="logo-mark"><span class="loop loop-left"></span><span class="loop loop-right"></span></div>
-        <span class="logo-text">elossence</span>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="men.html">Men</a>
-        <a href="women.html" style="color: var(--rose);">Women</a>
-        <a href="aboutus.html">About Us</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="window.location.href='login.html'">Login</button>
-        <button class="dark" onclick="window.location.href='signup.html'">Sign Up</button>
-      </div>
-    </div>
-  </header>
 
-  <!-- Cinematic Hero (Using your uploaded image!) -->
-  <section class="hero-full" style="background: url('https://static.vecteezy.com/system/resources/thumbnails/022/989/858/small/clothes-hang-on-hangers-illustration-ai-generative-free-photo.jpg') center 20%/cover no-repeat;">
-    <div class="cinematic-overlay"></div>
-    <div class="cinematic-content">
-      <h1 class="serif">The Women's Edit</h1>
-      <p>Delicate fluidity meets architectural structure.</p>
-    </div>
-  </section>
+        <div class="logo-area">
 
-  <section class="trending container">
-    <h2 class="serif" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Avant-Garde Selection</h2>
-    <div class="grid-4">
-      <div class="product-card">
-        <img src="images/ivoryWomen.jpeg" alt="Silk Dress">
-        <div class="product-info">
-          <h4 class="serif">Ivory Slip Dress</h4>
-          <p>Fluid Form</p>
+            <div class="logo-mark">
+
+                <span class="loop loop-left"></span>
+                <span class="loop loop-right"></span>
+
+            </div>
+
+            <span class="logo-text">
+                elossence
+            </span>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/noirWomen.jpeg" alt="Blazer">
-        <div class="product-info">
-          <h4 class="serif">Structured Noir Blazer</h4>
-          <p>Archival Series</p>
+
+
+        <!-- Navigation bar -->
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="men.html">
+                Men
+            </a>
+
+            <a href="women.html">
+                Women
+            </a>
+
+            <a href="#aboutus">
+                About Us
+            </a>
+
+        </nav>
+
+
+        <!-- Login & sign up -->
+
+        <div class="nav-actions">
+
+            <button>
+                Login
+            </button>
+
+            <button class="dark">
+                Sign Up
+            </button>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/ribbedMockWOmen.jpeg" alt="Knitwear">
-        <div class="product-info">
-          <h4 class="serif">Ribbed Mock Neck</h4>
-          <p>Everyday Luxury</p>
+
+
+        <!-- Hamburger -->
+
+        <div class="hamburger">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/wideLegWomen.jpeg" alt="Trousers">
-        <div class="product-info">
-          <h4 class="serif">Wide-Leg Crepe Trouser</h4>
-          <p>The Studio Collection</p>
-        </div>
-      </div>
+
     </div>
-  </section>
+
+</header>
+
+<section id="aboutus" class="editorial-statement about-target" style="padding-top: 6rem; padding-bottom: 6rem;">
+  <h2 class="serif" style="font-size: 3.2rem;">About Elossence</h2>
+  <p>Elossence is your premier luxury fashion discovery platform. We curate and recommend the finest clothing collections from across the globe for both men and women. Rather than manufacturing our own garments, we act as your personal style compass—exploring the vast fashion landscape to suggest everything from high-end designer pieces to elevated everyday essentials.</p>
+  <ul style="text-align: left; max-width: 550px; margin: 2rem auto 0; color: var(--plum-soft); line-height: 2;">
+    <li><strong>Expert Curation</strong> — Handpicked recommendations across luxury, contemporary, and heritage labels</li>
+    <li><strong>The Men's Edit</strong> — Discovered pieces ranging from sharp tailoring to refined streetwear</li>
+    <li><strong>The Women's Edit</strong> — Curated selections blending fluid elegance with architectural structure</li>
+    <li><strong>Comprehensive Style Guides</strong> — Tailored suggestions for every occasion, aesthetic, and mood</li>
+    <li><strong>Uncompromising Standards</strong> — Spotlighting brands that prioritize premium fabrics and exceptional design</li>
+  </ul>
+</section>
+
+
+
+<!-- =================================
+     PAGE INTRO
+     ================================= -->
+
+<section class="wf-hero">
+
+    <h1 class="serif">
+        The Women's Edit
+    </h1>
+
+    <p>
+        Six curated looks in warm, earthbound tones.
+        Tap any look to see the outfit breakdown.
+    </p>
+
+</section>
+
+
+
+<!-- =================================
+     LOOKBOOK GRID
+     ================================= -->
+
+<main class="wf-grid">
+
+
+    <!-- STREETWEAR -->
+
+    <div class="wf-block">
+
+        <img
+            class="wf-block-img"
+            src="images/chic.jpeg"
+            alt="Street wear"
+        >
+
+        <div class="wf-overlay">
+
+            <h3 class="wf-title serif">
+                Streetwear
+            </h3>
+
+            <p class="wf-desc">
+                Relaxed silhouettes, oversized utility fits,
+                warm brown layers, and clean urban edge.
+            </p>
+
+            <button
+                class="wf-btn"
+                onclick="openLookbook('Streetwear')"
+            >
+                Explore Outfits
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- SUMMER FITS -->
+
+    <div class="wf-block">
+
+        <img
+            class="wf-block-img"
+            src="images/sumfit.jpeg"
+            alt="Summer Fit"
+        >
+
+        <div class="wf-overlay">
+
+            <h3 class="wf-title serif">
+                Summer Fits
+            </h3>
+
+            <p class="wf-desc">
+                Sleek earth-tone crop tops, relaxed cargo trousers,
+                and bronzed golden aesthetics.
+            </p>
+
+            <button
+                class="wf-btn"
+                onclick="openLookbook('Summer Fits')"
+            >
+                Explore Outfits
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- WINTER FITS -->
+
+    <div class="wf-block">
+
+        <img
+            class="wf-block-img"
+            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80"
+            alt="Winter Fits"
+        >
+
+        <div class="wf-overlay">
+
+            <h3 class="wf-title serif">
+                Winter Fits
+            </h3>
+
+            <p class="wf-desc">
+                Heavy trench coats, chocolate brown faux fur,
+                structured blazers, and layered street luxury.
+            </p>
+
+            <button
+                class="wf-btn"
+                onclick="openLookbook('Winter Fits')"
+            >
+                Explore Outfits
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- AUTUMN LOOK -->
+
+    <div class="wf-block">
+
+        <img
+            class="wf-block-img"
+            src="images/atmfit.jpeg"
+            alt="Autumn Look"
+        >
+
+        <div class="wf-overlay">
+
+            <h3 class="wf-title serif">
+                Autumn Look
+            </h3>
+
+            <p class="wf-desc">
+                Deep caramel knits, mocha leather pants,
+                and rich vintage streetwear vibes.
+            </p>
+
+            <button
+                class="wf-btn"
+                onclick="openLookbook('Autumn Look')"
+            >
+                Explore Outfits
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TOP PICKS -->
+
+    <div class="wf-block wf-block-wide">
+
+        <img
+            class="wf-block-img"
+            src="images/toppick.jpeg"
+            alt="Top Picks"
+        >
+
+        <div class="wf-overlay">
+
+            <h3 class="wf-title serif">
+                Top Picks
+            </h3>
+
+            <p class="wf-desc">
+                The most iconic street style looks defined by
+                high-contrast bronze and dark aesthetic tones.
+            </p>
+
+            <button
+                class="wf-btn"
+                onclick="openLookbook('Top Picks')"
+            >
+                Explore Outfits
+            </button>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =================================
+     OUTFIT OVERLAY
+     ================================= -->
+
+<div
+    class="wf-page-overlay"
+    id="pageOverlay"
+>
+
+    <button
+        class="wf-close-btn"
+        onclick="closeLookbook()"
+    >
+        Close ✕
+    </button>
+
+
+    <div class="wf-overlay-header">
+
+        <h2
+            class="serif"
+            id="overlayTitle"
+        >
+            Category
+        </h2>
+
+        <p>
+            Outfit Inspiration
+        </p>
+
+    </div>
+
+
+    <div
+        class="wf-lookbook-grid"
+        id="lookbookGrid"
+    >
+
+        <!-- Cards render here -->
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================
+     FOOTER
+     ================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-grid">
+
+
+            <!-- Footer Brand -->
+
+            <div class="footer-brand">
+
+                <div
+                    class="logo-area"
+                    style="margin-bottom: 1rem;"
+                >
+
+                    <div class="logo-mark">
+
+                        <span class="loop loop-left"></span>
+                        <span class="loop loop-right"></span>
+
+                    </div>
+
+                    <span class="logo-text">
+                        elossence
+                    </span>
+
+                </div>
+
+
+                <p>
+                    Elevating everyday style with delicate,
+                    luxurious essentials designed for the
+                    modern aesthetic.
+                </p>
+
+            </div>
+
+
+
+            <!-- Discover -->
+
+            <div class="footer-links">
+
+                <h4>
+                    Discover
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            Heritage Collection
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="women.html">
+                            Women's Showcase
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Men's Showcase
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Editorials
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- Maison -->
+
+            <div class="footer-links">
+
+                <h4>
+                    Maison
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Ateliers
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Craftsmanship
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Sustainability
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- Client Services -->
+
+            <div class="footer-links">
+
+                <h4>
+                    Client Services
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Bespoke Appointments
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Garment Care
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Private Viewing
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; 2026 Elossence. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =================================
+     JAVASCRIPT
+     ================================= -->
+
+<script src="script.js"></script>
 
 </body>
 </html>
+```

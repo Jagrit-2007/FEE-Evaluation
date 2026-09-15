@@ -1,118 +1,1863 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Men's Edit | Elossence</title>
-<style>
-  /* ===== INTERNAL CSS ===== */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  :root { --ivory: #FBF3EF; --plum: #4B3230; --plum-soft: #7A5450; --rose: #C1877E; --bg-alt: #f4eae4; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background-color: var(--ivory); color: var(--plum); font-family: 'Jost', sans-serif; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
-  a { text-decoration: none; color: inherit; transition: color 0.3s; }
-  a:hover { color: var(--rose); }
-  .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+    <title>Elossence | The Men's Edit</title>
 
-  header { padding: 1.5rem 0; border-bottom: 1px solid rgba(75, 50, 48, 0.1); background: var(--ivory); }
-  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-  .logo-area { display: flex; align-items: center; gap: 1rem; }
-  
-  /* Original Index.html Logo Font */
-  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.3em; text-transform: lowercase; color: var(--plum); }
-  
-  .logo-mark { display: flex; align-items: center; }
-  .logo-mark .loop { width: 22px; height: 22px; border: 2px solid var(--rose); border-radius: 50%; }
-  .logo-mark .loop-right { margin-left: -9px; }
-  .nav-links { display: flex; gap: 2rem; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .nav-actions button { background: transparent; border: 1px solid var(--plum); color: var(--plum); padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 12px; text-transform: uppercase; cursor: pointer; }
-  .nav-actions button.dark { background: var(--plum); color: var(--ivory); }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  /* Hero Section */
-  .hero-full { position: relative; width: 100%; height: 60vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
-  .cinematic-overlay { position: absolute; inset: 0; background: rgba(46, 35, 32, 0.45); z-index: 1; }
-  .cinematic-content { position: relative; z-index: 2; padding: 0 2rem; }
-  .cinematic-content h1 { font-size: 5rem; margin-bottom: 1rem; }
-  
-  /* Grid Section */
-  .trending { padding-top: 4rem; padding-bottom: 6rem; }
-  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-  .product-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 1.5rem; background-color: var(--bg-alt); transition: opacity 0.3s; }
-  .product-card:hover img { opacity: 0.85; }
-  .product-info { text-align: center; }
-  .product-info h4 { font-size: 1.3rem; margin-bottom: 0.4rem; }
-  .product-info p { color: var(--plum-soft); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; }
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-  @media(max-width: 992px) {
-    .grid-4 { grid-template-columns: 1fr; }
-    .cinematic-content h1 { font-size: 3.5rem; }
-  }
-</style>
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        /* =====================================================
+           COLOURS
+        ===================================================== */
+
+        :root {
+            --bg-primary: #f8f1ed;
+            --bg-secondary: #fbf6f2;
+            --bg-card: #ffffff;
+
+            --brown: #4a302d;
+            --brown-light: #765e58;
+            --brown-soft: #9a8179;
+
+            --border: #ded2cc;
+
+            --white: #ffffff;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--brown);
+
+            font-family: 'Montserrat', sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           HEADER
+           Same style as homepage
+        ===================================================== */
+
+        header {
+            width: 100%;
+            height: 94px;
+
+            background: rgba(248, 241, 237, 0.97);
+
+            border-bottom: 1px solid var(--border);
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+
+        .container {
+            width: 100%;
+            max-width: 1450px;
+
+            margin: 0 auto;
+
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+
+        /* =====================================================
+           NAVIGATION WRAPPER
+        ===================================================== */
+
+        .nav-wrapper {
+            height: 94px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
+        .logo-area {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            min-width: 220px;
+
+            cursor: pointer;
+        }
+
+        .logo-mark {
+            position: relative;
+
+            width: 46px;
+            height: 28px;
+        }
+
+        .loop {
+            position: absolute;
+
+            width: 27px;
+            height: 27px;
+
+            border: 2px solid #bd8f86;
+
+            border-radius: 50%;
+
+            top: 0;
+        }
+
+        .loop-left {
+            left: 0;
+        }
+
+        .loop-right {
+            left: 18px;
+        }
+
+        .logo-text {
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 22px;
+
+            letter-spacing: 6px;
+
+            color: var(--brown);
+
+            text-transform: lowercase;
+        }
+
+
+        /* =====================================================
+           NAVIGATION LINKS
+        ===================================================== */
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 42px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+
+            color: var(--brown);
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            letter-spacing: 0.4px;
+
+            text-transform: uppercase;
+
+            position: relative;
+
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -8px;
+
+            width: 0;
+
+            height: 1px;
+
+            background: var(--brown);
+
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--brown-light);
+        }
+
+
+        /* =====================================================
+           LOGIN / SIGN UP
+        ===================================================== */
+
+        .nav-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            min-width: 220px;
+
+            justify-content: flex-end;
+        }
+
+        .nav-actions button {
+            padding: 12px 24px;
+
+            border: 1px solid #a9968e;
+
+            background: transparent;
+
+            color: var(--brown);
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 11px;
+
+            font-weight: 500;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .nav-actions button:hover {
+            background: var(--brown);
+
+            color: white;
+        }
+
+        .nav-actions .dark {
+            background: var(--brown);
+
+            border-color: var(--brown);
+
+            color: white;
+        }
+
+        .nav-actions .dark:hover {
+            background: #62433e;
+        }
+
+
+        /* =====================================================
+           HAMBURGER
+        ===================================================== */
+
+        .hamburger {
+            display: none;
+
+            width: 28px;
+
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+
+            height: 2px;
+
+            background: var(--brown);
+
+            margin: 5px 0;
+        }
+
+
+        /* =====================================================
+           MEN'S INTRO
+        ===================================================== */
+
+        .men-intro {
+            background: var(--bg-primary);
+
+            text-align: center;
+
+            padding: 82px 25px 48px;
+        }
+
+        .men-intro h1 {
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 55px;
+
+            line-height: 1.1;
+
+            font-weight: 400;
+
+            color: var(--brown);
+
+            margin-bottom: 25px;
+        }
+
+        .men-intro p {
+            max-width: 750px;
+
+            margin: 0 auto;
+
+            color: var(--brown-light);
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+
+            font-weight: 400;
+        }
+
+
+        /* =====================================================
+           MEN'S COLLECTION GRID
+
+           SMALL SPACE BETWEEN SEGMENTS
+        ===================================================== */
+
+        .grid-container {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            /* SMALL GAP BETWEEN EVERY IMAGE */
+            gap: 7px;
+
+            /* Background visible through the gaps */
+            background: var(--bg-primary);
+        }
+
+
+        /* =====================================================
+           COLLECTION BLOCK
+        ===================================================== */
+
+        .block {
+            position: relative;
+
+            overflow: hidden;
+
+            background: #ddd;
+
+            cursor: pointer;
+
+            min-height: 0;
+        }
+
+
+        /* =====================================================
+           BLOCK HEIGHTS
+        ===================================================== */
+
+        .block-1,
+        .block-2,
+        .block-3,
+        .block-4,
+        .block-5,
+        .block-6 {
+            grid-column: span 1;
+
+            height: 560px;
+        }
+
+        .block-7 {
+            grid-column: span 2;
+
+            height: 650px;
+        }
+
+
+        /* =====================================================
+           IMAGES
+
+           ORIGINAL IMAGE URLs ARE PRESERVED
+        ===================================================== */
+
+        .block-img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            filter: none;
+
+            transition:
+                transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .block:hover .block-img {
+            transform: scale(1.045);
+        }
+
+
+        /* =====================================================
+           IMAGE OVERLAY
+        ===================================================== */
+
+        .block-overlay {
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            padding: 30px;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(45, 29, 26, 0.78),
+                    rgba(45, 29, 26, 0.30),
+                    transparent 58%
+                );
+        }
+
+
+        /* =====================================================
+           TAG
+        ===================================================== */
+
+        .tag {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 9px;
+
+            letter-spacing: 2.2px;
+
+            color: #f3e8e2;
+
+            text-transform: uppercase;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =====================================================
+           CATEGORY TITLE
+        ===================================================== */
+
+        .block-title {
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 36px;
+
+            line-height: 1.1;
+
+            font-weight: 400;
+
+            color: white;
+
+            letter-spacing: 0;
+
+            margin-bottom: 12px;
+
+            text-transform: none;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .block-desc {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            color: #f0e7e3;
+
+            max-width: 570px;
+
+            font-weight: 400;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =====================================================
+           EXPLORE BUTTON
+        ===================================================== */
+
+        .explore-btn {
+            align-self: flex-start;
+
+            padding: 11px 22px;
+
+            background: rgba(248, 241, 237, 0.95);
+
+            border: 1px solid rgba(255,255,255,0.8);
+
+            color: var(--brown);
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+        .explore-btn:hover {
+            background: var(--brown);
+
+            color: white;
+
+            border-color: var(--brown);
+        }
+
+
+        /* =====================================================
+           CATALOG OVERLAY
+        ===================================================== */
+
+        .page-overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: var(--bg-primary);
+
+            z-index: 2000;
+
+            display: none;
+
+            flex-direction: column;
+
+            opacity: 0;
+
+            transition: opacity 0.4s ease;
+
+            overflow-y: auto;
+
+            padding: 45px 40px;
+        }
+
+        .page-overlay.active {
+            display: flex;
+
+            opacity: 1;
+        }
+
+
+        /* =====================================================
+           CLOSE BUTTON
+        ===================================================== */
+
+        .close-btn {
+            position: fixed;
+
+            top: 25px;
+
+            right: 30px;
+
+            background: var(--brown);
+
+            border: 1px solid var(--brown);
+
+            color: white;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.2px;
+
+            padding: 11px 20px;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            z-index: 2001;
+
+            transition: 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: transparent;
+
+            color: var(--brown);
+        }
+
+
+        /* =====================================================
+           OVERLAY HEADER
+        ===================================================== */
+
+        .overlay-header {
+            text-align: center;
+
+            margin-top: 35px;
+
+            margin-bottom: 45px;
+        }
+
+        .overlay-header h2 {
+            font-family: 'DM Serif Display', serif;
+
+            font-size: 50px;
+
+            font-weight: 400;
+
+            color: var(--brown);
+        }
+
+        .overlay-header p {
+            font-family: 'Montserrat', sans-serif;
+
+            color: var(--brown-light);
+
+            font-size: 13px;
+
+            margin-top: 10px;
+        }
+
+
+        /* =====================================================
+           PRODUCT GRID
+        ===================================================== */
+
+        .product-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(260px, 1fr)
+                );
+
+            gap: 28px;
+
+            max-width: 1400px;
+
+            width: 100%;
+
+            margin: 0 auto;
+        }
+
+
+        /* =====================================================
+           PRODUCT CARD
+        ===================================================== */
+
+        .product-card {
+            background: white;
+
+            border: 1px solid var(--border);
+
+            overflow: hidden;
+
+            position: relative;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(74, 48, 45, 0.12);
+        }
+
+        .product-card img {
+            width: 100%;
+
+            height: 360px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-card h4 {
+            font-family: 'DM Serif Display', serif;
+
+            color: var(--brown);
+
+            font-size: 20px;
+
+            font-weight: 400;
+
+            margin-bottom: 15px;
+        }
+
+        .price-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .product-card .badge {
+            font-family: 'Montserrat', sans-serif;
+
+            font-size: 8px;
+
+            background: var(--brown);
+
+            color: white;
+
+            padding: 6px 9px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+            background: var(--bg-secondary);
+
+            border-top: 1px solid var(--border);
+
+            padding: 45px 25px;
+
+            text-align: center;
+        }
+
+        footer p {
+            font-family: 'Montserrat', sans-serif;
+
+            color: var(--brown-light);
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 22px;
+            }
+
+            .logo-area {
+                min-width: auto;
+            }
+
+            .nav-actions {
+                min-width: auto;
+            }
+
+            .block-1,
+            .block-2,
+            .block-3,
+            .block-4,
+            .block-5,
+            .block-6 {
+                height: 480px;
+            }
+
+            .block-7 {
+                height: 560px;
+            }
+
+            .block-title {
+                font-size: 31px;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 750px) {
+
+            header {
+                height: auto;
+            }
+
+            .nav-wrapper {
+                height: auto;
+
+                min-height: 80px;
+
+                flex-wrap: wrap;
+
+                padding-top: 15px;
+
+                padding-bottom: 15px;
+            }
+
+            .logo-area {
+                min-width: auto;
+            }
+
+            .logo-text {
+                font-size: 19px;
+
+                letter-spacing: 4px;
+            }
+
+            .nav-links {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 20px;
+
+                padding-top: 14px;
+
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .men-intro {
+                padding: 60px 20px 40px;
+            }
+
+            .men-intro h1 {
+                font-size: 42px;
+            }
+
+            .men-intro p {
+                font-size: 13px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+
+                /* Keep small gap on mobile too */
+                gap: 7px;
+            }
+
+            .block-1,
+            .block-2,
+            .block-3,
+            .block-4,
+            .block-5,
+            .block-6,
+            .block-7 {
+                grid-column: span 1;
+
+                height: 500px;
+            }
+
+            .block-7 {
+                height: 540px;
+            }
+
+            .block-overlay {
+                padding: 25px 20px;
+            }
+
+            .block-title {
+                font-size: 31px;
+            }
+
+            .block-desc {
+                max-width: 100%;
+
+                font-size: 12px;
+            }
+
+            .page-overlay {
+                padding: 30px 15px;
+            }
+
+            .overlay-header h2 {
+                font-size: 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card img {
+                height: 390px;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+            .container {
+                padding-left: 20px;
+
+                padding-right: 20px;
+            }
+
+            .logo-mark {
+                width: 40px;
+            }
+
+            .logo-text {
+                font-size: 17px;
+
+                letter-spacing: 3px;
+            }
+
+            .men-intro h1 {
+                font-size: 37px;
+            }
+
+            .block-1,
+            .block-2,
+            .block-3,
+            .block-4,
+            .block-5,
+            .block-6,
+            .block-7 {
+                height: 450px;
+            }
+
+            .block-7 {
+                height: 480px;
+            }
+
+            .block-title {
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
 </head>
+
+
 <body>
 
-  <header>
-    <div class="container nav-wrapper">
-      <div class="logo-area">
-        <div class="logo-mark"><span class="loop loop-left"></span><span class="loop loop-right"></span></div>
-        <span class="logo-text">elossence</span>
-      </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="men.html" style="color: var(--rose);">Men</a>
-        <a href="women.html">Women</a>
-        <a href="aboutus.html">About Us</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="window.location.href='login.html'">Login</button>
-        <button class="dark" onclick="window.location.href='signup.html'">Sign Up</button>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero-full" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHu8R5uHAlpeUW-0BT2TmiWILVFNfZq1udsQ65nJWAQ&s=10') center 30%/cover no-repeat;">
-    <div class="cinematic-overlay"></div>
-    <div class="cinematic-content">
-      <h1 class="serif">The Men's Edit</h1>
-      <p>Sharp tailoring, structural mastery, and brooding silhouettes.</p>
-    </div>
-  </section>
+    <!-- =====================================================
+         HEADER
+         SAME AS HOMEPAGE
+    ===================================================== -->
 
-  <section class="trending container">
-    <h2 class="serif" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Curated Essentials</h2>
-    <div class="grid-4">
-      <div class="product-card">
-        <img src="images/cash,mereOvercoatMen.jpeg" alt="Tailored Coat">
-        <div class="product-info">
-          <h4 class="serif">Cashmere Overcoat</h4>
-          <p>Archival Series</p>
+    <header>
+
+        <div class="container nav-wrapper">
+
+
+            <!-- LOGO -->
+
+            <div
+                class="logo-area"
+                onclick="window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                })"
+            >
+
+                <div class="logo-mark">
+
+                    <span class="loop loop-left"></span>
+
+                    <span class="loop loop-right"></span>
+
+                </div>
+
+                <span class="logo-text">
+                    elossence
+                </span>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="#">
+                    Men
+                </a>
+
+                <a href="women.html">
+                    Women
+                </a>
+
+                <a href="#aboutus">
+                    About Us
+                </a>
+
+            </nav>
+
+
+            <!-- LOGIN / SIGN UP -->
+
+            <div class="nav-actions">
+
+                <button>
+                    Login
+                </button>
+
+                <button class="dark">
+                    Sign Up
+                </button>
+
+            </div>
+
+
+            <!-- HAMBURGER -->
+
+            <div class="hamburger">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/onyxMen.jpeg" alt="Silk Shirt">
-        <div class="product-info">
-          <h4 class="serif">Onyx Silk Button-Down</h4>
-          <p>Evening Wear</p>
+
+    </header>
+
+
+    <!-- =====================================================
+         MEN'S EDIT INTRO
+    ===================================================== -->
+
+    <section class="men-intro">
+
+        <h1>
+            The Men's Edit
+        </h1>
+
+        <p>
+            Seven curated looks in contemporary silhouettes and
+            timeless heritage tones. Tap any look to see the outfit
+            breakdown.
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         MEN'S COLLECTION GRID
+         
+         ORIGINAL IMAGES + TEXT PRESERVED
+         
+         7px GAP BETWEEN SEGMENTS
+    ===================================================== -->
+
+    <main
+        class="grid-container"
+        id="collections"
+    >
+
+
+        <!-- =================================================
+             BLOCK 1
+        ================================================= -->
+
+        <div class="block block-1">
+
+            <img
+                class="block-img"
+                src="https://i.pinimg.com/736x/0e/c7/f3/0ec7f35c1ac08fef410300897ea89ed1.jpg"
+                alt="Summer Ethnic"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    New Arrival / Drop 01
+                </span>
+
+                <h3 class="block-title">
+                    Linen & Silk Kurta Sets
+                </h3>
+
+                <p class="block-desc">
+                    Effortless silhouettes built for modern
+                    daytime celebrations and relaxed evening
+                    gatherings.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Summer Ethnic')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/pleatedtrousersMen.jpeg" alt="Trousers">
-        <div class="product-info">
-          <h4 class="serif">Pleated Wool Trousers</h4>
-          <p>Structural Form</p>
+
+
+
+        <!-- =================================================
+             BLOCK 2
+        ================================================= -->
+
+        <div class="block block-2">
+
+            <img
+                class="block-img"
+                src="https://i.pinimg.com/736x/12/21/37/122137690116236ddb28075995b9d6bd.jpg"
+                alt="Winter Velvet"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Limited Edition
+                </span>
+
+                <h3 class="block-title">
+                    Velvet Bandhgalas
+                </h3>
+
+                <p class="block-desc">
+                    Rich textures meet sharp structured cuts
+                    for cold-weather elegance.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Winter Velvet')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
         </div>
-      </div>
-      <div class="product-card">
-        <img src="images/signatureMen.jpeg" alt="Suit">
-        <div class="product-info">
-          <h4 class="serif">The Signature Suit</h4>
-          <p>Bespoke Tailoring</p>
+
+
+
+        <!-- =================================================
+             BLOCK 3
+        ================================================= -->
+
+        <div class="block block-3">
+
+            <img
+                class="block-img"
+                src="https://i.pinimg.com/1200x/12/e9/f1/12e9f134aeec4333dce9a84ff9ea26e4.jpg"
+                alt="Festive Wear"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Celebration Edit
+                </span>
+
+                <h3 class="block-title">
+                    Festive Sets
+                </h3>
+
+                <p class="block-desc">
+                    Intricate threadwork & tailored Nehru
+                    jackets.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Festive Wear')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
         </div>
-      </div>
+
+
+
+        <!-- =================================================
+             BLOCK 4
+        ================================================= -->
+
+        <div class="block block-4">
+
+            <img
+                class="block-img"
+                src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=800&q=80"
+                alt="Top Picks"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Bestseller
+                </span>
+
+                <h3 class="block-title">
+                    Elite Suits
+                </h3>
+
+                <p class="block-desc">
+                    Sharp razor tailoring for the modern
+                    executive style icon.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Top Picks')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLOCK 5
+        ================================================= -->
+
+        <div class="block block-5">
+
+            <img
+                class="block-img"
+                src="https://i.pinimg.com/736x/53/0a/39/530a3940ad8d69667ac50082692c2b55.jpg"
+                alt="Stylist Advised"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Curated
+                </span>
+
+                <h3 class="block-title">
+                    Smart Casuals
+                </h3>
+
+                <p class="block-desc">
+                    Red carpet fusion pairings designed to
+                    turn heads.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Advised Suits')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLOCK 6
+        ================================================= -->
+
+        <div
+            class="block block-6"
+            id="trending"
+        >
+
+            <img
+                class="block-img"
+                src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=1200&q=80"
+                alt="Trending Now"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Trending Drop
+                </span>
+
+                <h3 class="block-title">
+                    Oversized Indo-Western
+                </h3>
+
+                <p class="block-desc">
+                    Reinventing traditional codes with
+                    streetwear aesthetics and relaxed
+                    proportions.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Trending Now')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BLOCK 7
+        ================================================= -->
+
+        <div
+            class="block block-7"
+            id="couture"
+        >
+
+            <img
+                class="block-img"
+                src="https://i.pinimg.com/736x/ae/84/e3/ae84e305bb33ab7910a34aa732e66a6d.jpg"
+                alt="Royal Sherwani"
+            >
+
+            <div class="block-overlay">
+
+                <span class="tag">
+                    Grand Ceremony
+                </span>
+
+                <h3 class="block-title">
+                    Groom Sherwanis
+                </h3>
+
+                <p class="block-desc">
+                    Vintage gold zari embroideries and heavy
+                    regal brocades for monumental occasions.
+                </p>
+
+                <button
+                    class="explore-btn"
+                    onclick="openPage('Royal Sherwani')"
+                >
+                    Explore
+                </button>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CATALOG POPUP
+    ===================================================== -->
+
+    <div
+        class="page-overlay"
+        id="pageOverlay"
+    >
+
+        <button
+            class="close-btn"
+            onclick="closePage()"
+        >
+            Close [X]
+        </button>
+
+
+        <div class="overlay-header">
+
+            <h2 id="overlayTitle">
+                Catalog
+            </h2>
+
+            <p id="overlaySubtext">
+                Engineered for the fashion-forward modern man.
+            </p>
+
+        </div>
+
+
+        <div
+            class="product-grid"
+            id="productGrid"
+        >
+
+        </div>
+
     </div>
-  </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 Elossence. All rights reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =====================================================
+           CATALOG DATA
+        ===================================================== */
+
+        const catalogData = {
+
+            'Summer Ethnic': [
+
+                {
+                    name:
+                        'Ivory Cotton Silk Kurta Set',
+
+                    img:
+                        'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Selling Fast'
+                },
+
+                {
+                    name:
+                        'Pastel Mint Linen Bandhgala',
+
+                    img:
+                        'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'New'
+                },
+
+                {
+                    name:
+                        'Sage Green Pleated Kurta',
+
+                    img:
+                        'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Trending'
+                }
+
+            ],
+
+
+            'Winter Velvet': [
+
+                {
+                    name:
+                        'Deep Obsidian Velvet Bandhgala',
+
+                    img:
+                        'https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Limited'
+                },
+
+                {
+                    name:
+                        'Royal Wine Achkan Jacket',
+
+                    img:
+                        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Exclusive'
+                }
+
+            ],
+
+
+            'Festive Wear': [
+
+                {
+                    name:
+                        'Zardozi Embroidered Silk Kurta',
+
+                    img:
+                        'https://i.pinimg.com/1200x/55/a3/a2/55a3a2aeaa097aa9448ffbd5baf9a714.jpg',
+
+                    badge:
+                        'Hot'
+                },
+
+                {
+                    name:
+                        'Brocarded Black Nehru Jacket',
+
+                    img:
+                        'https://i.pinimg.com/1200x/c1/d5/b6/c1d5b60cfea66be6fd23efee4bd5ebcd.jpg',
+
+                    badge:
+                        'Popular'
+                }
+
+            ],
+
+
+            'Top Picks': [
+
+                {
+                    name:
+                        'Classic Minimalist Tuxedo Suit',
+
+                    img:
+                        'https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Bestseller'
+                },
+
+                {
+                    name:
+                        'Signature Gold Weave Brocade',
+
+                    img:
+                        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Trending'
+                }
+
+            ],
+
+
+            'Advised Suits': [
+
+                {
+                    name:
+                        'Tailored Peak Lapel Evening Suit',
+
+                    img:
+                        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Stylist Pick'
+                }
+
+            ],
+
+
+            'Trending Now': [
+
+                {
+                    name:
+                        'Modern Asymmetric Street-Kurta',
+
+                    img:
+                        'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Fast Filling'
+                }
+
+            ],
+
+
+            'Royal Sherwani': [
+
+                {
+                    name:
+                        'Vintage Gold Royalty Groom Sherwani',
+
+                    img:
+                        'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80',
+
+                    badge:
+                        'Couture'
+                }
+
+            ]
+
+        };
+
+
+        /* =====================================================
+           OPEN CATALOG
+        ===================================================== */
+
+        function openPage(categoryTitle) {
+
+            const overlay =
+                document.getElementById('pageOverlay');
+
+            const titleEl =
+                document.getElementById('overlayTitle');
+
+            const gridEl =
+                document.getElementById('productGrid');
+
+
+            titleEl.textContent = categoryTitle;
+
+            gridEl.innerHTML = '';
+
+
+            const items =
+                catalogData[categoryTitle]
+                ||
+                catalogData['Top Picks'];
+
+
+            items.forEach(item => {
+
+                const card =
+                    document.createElement('div');
+
+                card.className =
+                    'product-card';
+
+
+                card.innerHTML = `
+
+                    <div
+                        style="
+                            position:relative;
+                            overflow:hidden;
+                        "
+                    >
+
+                        <img
+                            src="${item.img}"
+                            alt="${item.name}"
+                            style="
+                                transition:
+                                transform 0.5s ease;
+                            "
+                            onmouseover="
+                                this.style.transform='scale(1.05)'
+                            "
+                            onmouseout="
+                                this.style.transform='scale(1)'
+                            "
+                        >
+
+                        <span
+                            style="
+                                position:absolute;
+                                top:10px;
+                                left:10px;
+                            "
+                            class="badge"
+                        >
+                            ${item.badge}
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+                        <div class="price-row">
+
+                            <span
+                                style="
+                                    font-size:0.7rem;
+                                    color:var(--brown-light);
+                                    text-transform:uppercase;
+                                    font-weight:600;
+                                    cursor:pointer;
+                                    letter-spacing:1px;
+                                "
+                            >
+                                Quick Add +
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                gridEl.appendChild(card);
+
+            });
+
+
+            overlay.style.display = 'flex';
+
+
+            setTimeout(() => {
+
+                overlay.classList.add('active');
+
+            }, 10);
+
+
+            document.body.style.overflow = 'hidden';
+
+        }
+
+
+        /* =====================================================
+           CLOSE CATALOG
+        ===================================================== */
+
+        function closePage() {
+
+            const overlay =
+                document.getElementById('pageOverlay');
+
+
+            overlay.classList.remove('active');
+
+
+            setTimeout(() => {
+
+                overlay.style.display = 'none';
+
+                document.body.style.overflow = 'auto';
+
+            }, 400);
+
+        }
+
+
+        /* =====================================================
+           HAMBURGER MENU
+        ===================================================== */
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            () => {
+
+                const hamburger =
+                    document.querySelector('.hamburger');
+
+                const navLinks =
+                    document.querySelector('.nav-links');
+
+
+                hamburger.addEventListener(
+                    'click',
+                    () => {
+
+                        hamburger.classList.toggle('active');
+
+                        navLinks.classList.toggle('active');
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
 
 </body>
+
 </html>
