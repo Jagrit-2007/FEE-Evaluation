@@ -37,6 +37,14 @@
   50% { opacity: 1; }
 }
 
+.about-target {
+  display: none;
+}
+
+.about-target:target {
+  display: block;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
