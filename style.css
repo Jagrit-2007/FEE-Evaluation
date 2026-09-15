@@ -469,7 +469,7 @@ header {
 .interlude {
   background-color: var(--plum);
   color: var(--ivory);
-  padding: 8rem 5%;
+  padding: 1rem 5%;
   text-align: center;
   display: flex;
   flex-direction: column;

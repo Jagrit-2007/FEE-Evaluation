@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Men's Edit | Elossence</title>
+<style>
+  /* ===== INTERNAL CSS ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  :root { --ivory: #FBF3EF; --plum: #4B3230; --plum-soft: #7A5450; --rose: #C1877E; --bg-alt: #f4eae4; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: var(--ivory); color: var(--plum); font-family: 'Jost', sans-serif; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  a:hover { color: var(--rose); }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
+  header { padding: 1.5rem 0; border-bottom: 1px solid rgba(75, 50, 48, 0.1); background: var(--ivory); }
+  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+  .logo-area { display: flex; align-items: center; gap: 1rem; }
+  
+  /* Original Index.html Logo Font */
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.3em; text-transform: lowercase; color: var(--plum); }
+  
+  .logo-mark { display: flex; align-items: center; }
+  .logo-mark .loop { width: 22px; height: 22px; border: 2px solid var(--rose); border-radius: 50%; }
+  .logo-mark .loop-right { margin-left: -9px; }
+  .nav-links { display: flex; gap: 2rem; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .nav-actions button { background: transparent; border: 1px solid var(--plum); color: var(--plum); padding: 0.5rem 1.2rem; font-family: 'Jost', sans-serif; font-size: 12px; text-transform: uppercase; cursor: pointer; }
+  .nav-actions button.dark { background: var(--plum); color: var(--ivory); }
+
+  /* Hero Section */
+  .hero-full { position: relative; width: 100%; height: 60vh; min-height: 500px; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
+  .cinematic-overlay { position: absolute; inset: 0; background: rgba(46, 35, 32, 0.45); z-index: 1; }
+  .cinematic-content { position: relative; z-index: 2; padding: 0 2rem; }
+  .cinematic-content h1 { font-size: 5rem; margin-bottom: 1rem; }
+  
+  /* Grid Section */
+  .trending { padding-top: 4rem; padding-bottom: 6rem; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+  .product-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 1.5rem; background-color: var(--bg-alt); transition: opacity 0.3s; }
+  .product-card:hover img { opacity: 0.85; }
+  .product-info { text-align: center; }
+  .product-info h4 { font-size: 1.3rem; margin-bottom: 0.4rem; }
+  .product-info p { color: var(--plum-soft); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; }
+
+  @media(max-width: 992px) {
+    .grid-4 { grid-template-columns: 1fr; }
+    .cinematic-content h1 { font-size: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo-area">
+        <div class="logo-mark"><span class="loop loop-left"></span><span class="loop loop-right"></span></div>
+        <span class="logo-text">elossence</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="men.html" style="color: var(--rose);">Men</a>
+        <a href="women.html">Women</a>
+        <a href="aboutus.html">About Us</a>
+      </nav>
+      <div class="nav-actions">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button class="dark" onclick="window.location.href='signup.html'">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-full" style="background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNHu8R5uHAlpeUW-0BT2TmiWILVFNfZq1udsQ65nJWAQ&s=10') center 30%/cover no-repeat;">
+    <div class="cinematic-overlay"></div>
+    <div class="cinematic-content">
+      <h1 class="serif">The Men's Edit</h1>
+      <p>Sharp tailoring, structural mastery, and brooding silhouettes.</p>
+    </div>
+  </section>
+
+  <section class="trending container">
+    <h2 class="serif" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Curated Essentials</h2>
+    <div class="grid-4">
+      <div class="product-card">
+        <img src="images/cash,mereOvercoatMen.jpeg" alt="Tailored Coat">
+        <div class="product-info">
+          <h4 class="serif">Cashmere Overcoat</h4>
+          <p>Archival Series</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/onyxMen.jpeg" alt="Silk Shirt">
+        <div class="product-info">
+          <h4 class="serif">Onyx Silk Button-Down</h4>
+          <p>Evening Wear</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/pleatedtrousersMen.jpeg" alt="Trousers">
+        <div class="product-info">
+          <h4 class="serif">Pleated Wool Trousers</h4>
+          <p>Structural Form</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/signatureMen.jpeg" alt="Suit">
+        <div class="product-info">
+          <h4 class="serif">The Signature Suit</h4>
+          <p>Bespoke Tailoring</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

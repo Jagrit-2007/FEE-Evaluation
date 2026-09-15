@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Elossence</title>
+<style>
+  /* ===== INTERNAL CSS ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  :root {
+    --ivory: #FBF3EF;
+    --plum: #4B3230;
+    --plum-soft: #7A5450;
+    --rose: #C1877E;
+    --bg-alt: #f4eae4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background-color: var(--ivory); color: var(--plum); font-family: 'Jost', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3, h4, .serif { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+  a { text-decoration: none; color: inherit; transition: color 0.3s; }
+  a:hover { color: var(--rose); }
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
+  /* Header Styles */
+  header { padding: 1.5rem 0; border-bottom: 1px solid rgba(75, 50, 48, 0.1); background: var(--ivory); }
+  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+  .logo-area { display: flex; align-items: center; gap: 1rem; }
+  
+  /* Original Index.html Logo Font */
+  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.3em; text-transform: lowercase; color: var(--plum); }
+  
+  .logo-mark { display: flex; align-items: center; }
+  .logo-mark .loop { display: block; width: 22px; height: 22px; border: 2px solid var(--rose); border-radius: 50%; }
+  .logo-mark .loop-right { margin-left: -9px; }
+  .nav-links { display: flex; gap: 2rem; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Auth Specific Styles */
+  .auth-wrapper { display: flex; min-height: calc(100vh - 86px); }
+  .auth-image { flex: 1; background-color: var(--bg-alt); }
+  .auth-form-container { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
+  .auth-form-container h2 { font-size: 3rem; margin-bottom: 0.5rem; }
+  .auth-form-container > p { color: var(--plum-soft); margin-bottom: 3rem; font-size: 1.1rem; }
+  
+  .auth-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .auth-form input { padding: 1rem; background: transparent; border: none; border-bottom: 1px solid rgba(75, 50, 48, 0.3); font-family: 'Jost', sans-serif; color: var(--plum); font-size: 1rem; outline: none; transition: border-color 0.3s; }
+  .auth-form input:focus { border-bottom-color: var(--plum); }
+  .auth-form button { margin-top: 1.5rem; padding: 1.2rem; background: var(--plum); color: var(--ivory); border: none; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: background 0.3s; }
+  .auth-form button:hover { background: var(--rose); }
+  .auth-links { margin-top: 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; }
+
+  @media(max-width: 768px) {
+    .auth-wrapper { flex-direction: column; }
+    .auth-image { min-height: 30vh; }
+    .auth-form-container { padding: 4rem 5%; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo-area">
+        <div class="logo-mark"><span class="loop loop-left"></span><span class="loop loop-right"></span></div>
+        <span class="logo-text">elossence</span>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="men.html">Men</a>
+        <a href="women.html">Women</a>
+        <a href="aboutus.html">About Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="auth-wrapper">
+    <!-- Using a luxury fashion image for the login screen -->
+    <div class="auth-image" style="background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=80') center/cover;"></div>
+    
+    <div class="auth-form-container">
+      <h2 class="serif">Welcome Back</h2>
+      <p>Enter your details to access your inner circle account.</p>
+      
+      <form class="auth-form">
+        <input type="email" placeholder="Email Address" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="dark">Sign In</button>
+      </form>
+      
+      <div class="auth-links">
+        <a href="#">Forgot Password?</a>
+        <p>Don't have an account? <a href="signup.html" style="color: var(--rose);">Sign Up</a></p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
