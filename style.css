@@ -694,3 +694,494 @@ footer {
 .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.active span:nth-child(2) { opacity: 0; }
 .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Active Nav Link */
+.nav-links a.active {
+  color: var(--rose);
+  position: relative;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--rose);
+}
+
+/* =====================================================
+   CONTACT US PAGE STYLES (MATCHING THEME)
+===================================================== */
+.contact-hero {
+  padding: 5rem 5% 3rem;
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.contact-hero h1 {
+  font-size: 3.5rem;
+  color: var(--plum);
+  margin-bottom: 1rem;
+}
+
+.contact-hero p {
+  color: var(--plum-soft);
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+.contact-wrapper {
+  padding-bottom: 7rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+
+.contact-info-panel {
+  background: var(--bg-alt);
+  padding: 3.5rem;
+  border: 1px solid rgba(75, 50, 48, 0.08);
+}
+
+.contact-info-panel h3 {
+  font-size: 2rem;
+  color: var(--plum);
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-panel p {
+  color: var(--plum-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  margin-bottom: 1.8rem;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--rose);
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+
+.info-val {
+  font-size: 1.05rem;
+  color: var(--plum);
+}
+
+.info-val a {
+  color: var(--plum);
+  border-bottom: 1px solid rgba(75, 50, 48, 0.3);
+  transition: all 0.3s;
+}
+
+.info-val a:hover {
+  color: var(--rose);
+  border-color: var(--rose);
+}
+
+.atelier-services {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(75, 50, 48, 0.12);
+}
+
+.atelier-services h4 {
+  font-size: 1.2rem;
+  color: var(--plum);
+  margin-bottom: 1rem;
+}
+
+.atelier-services ul {
+  list-style: none;
+}
+
+.atelier-services li {
+  color: var(--plum-soft);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.atelier-services li::before {
+  content: '✦';
+  color: var(--rose);
+  font-size: 0.8rem;
+}
+
+/* Contact Form Container */
+.contact-form-panel {
+  background: #ffffff;
+  padding: 3.5rem;
+  border: 1px solid rgba(75, 50, 48, 0.08);
+  box-shadow: 0 10px 40px -20px rgba(75, 50, 48, 0.07);
+}
+
+.contact-form-panel h3 {
+  font-size: 2.2rem;
+  color: var(--plum);
+  margin-bottom: 0.5rem;
+}
+
+.contact-form-panel > p {
+  color: var(--plum-soft);
+  font-size: 0.95rem;
+  margin-bottom: 2.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--plum);
+  font-weight: 500;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  background: var(--ivory);
+  border: 1px solid rgba(75, 50, 48, 0.2);
+  color: var(--plum);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: var(--plum);
+  background: #ffffff;
+  box-shadow: 0 0 0 1px var(--plum);
+}
+
+.form-field input.error,
+.form-field select.error,
+.form-field textarea.error {
+  border-color: #b94a48;
+  background: #fff8f8;
+}
+
+.field-error-text {
+  font-size: 0.78rem;
+  color: #b94a48;
+  min-height: 1rem;
+}
+
+.btn-contact-submit {
+  padding: 1.1rem 2.5rem;
+  background: var(--plum);
+  color: var(--ivory);
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+.btn-contact-submit:hover {
+  background: var(--rose);
+  color: var(--ivory);
+}
+
+/* Success Card for Contact */
+.contact-success-state {
+  display: none;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.contact-success-state .success-icon {
+  width: 60px;
+  height: 60px;
+  border: 2px solid var(--rose);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: var(--rose);
+  font-size: 1.5rem;
+}
+
+.contact-success-state h3 {
+  font-size: 2.2rem;
+  color: var(--plum);
+  margin-bottom: 1rem;
+}
+
+.contact-success-state p {
+  color: var(--plum-soft);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+
+.contact-ticket {
+  display: inline-block;
+  padding: 0.6rem 1.4rem;
+  background: var(--bg-alt);
+  border: 1px dashed var(--rose);
+  color: var(--plum);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+/* =====================================================
+   THANK YOU / SUBSCRIBED PAGE STYLES (MATCHING THEME)
+===================================================== */
+.thankyou-section {
+  min-height: calc(100vh - 86px - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 5%;
+  text-align: center;
+  background: var(--ivory);
+}
+
+.thankyou-card {
+  max-width: 780px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 4.5rem 4rem;
+  border: 1px solid rgba(75, 50, 48, 0.1);
+  box-shadow: 0 15px 50px -20px rgba(75, 50, 48, 0.08);
+}
+
+.thankyou-card .logo-mark {
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.thankyou-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--rose);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.thankyou-card h1 {
+  font-size: 3.6rem;
+  color: var(--plum);
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+}
+
+.thankyou-card p.lead {
+  font-size: 1.2rem;
+  color: var(--plum-soft);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.subscriber-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1.5rem;
+  background: var(--bg-alt);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  color: var(--plum);
+  margin-bottom: 2.5rem;
+  border: 1px solid rgba(193, 135, 126, 0.35);
+}
+
+.subscriber-pill span.icon {
+  color: var(--rose);
+}
+
+.thankyou-perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(75, 50, 48, 0.08);
+}
+
+.perk-item {
+  padding: 1.2rem 1rem;
+  background: var(--ivory);
+}
+
+.perk-icon {
+  font-size: 1.2rem;
+  color: var(--rose);
+  margin-bottom: 0.5rem;
+}
+
+.perk-item h4 {
+  font-size: 1.15rem;
+  color: var(--plum);
+  margin-bottom: 0.4rem;
+}
+
+.perk-item p {
+  font-size: 0.85rem;
+  color: var(--plum-soft);
+  line-height: 1.5;
+}
+
+.thankyou-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn-thankyou-primary {
+  display: inline-block;
+  padding: 1rem 2.4rem;
+  background: var(--plum);
+  color: var(--ivory);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border: 1px solid var(--plum);
+}
+
+.btn-thankyou-primary:hover {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: var(--ivory);
+}
+
+.btn-thankyou-secondary {
+  display: inline-block;
+  padding: 1rem 2.4rem;
+  background: transparent;
+  color: var(--plum);
+  border: 1px solid var(--plum);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.btn-thankyou-secondary:hover {
+  background: var(--bg-alt);
+  color: var(--plum);
+}
+
+/* Newsletter feedback inline */
+.newsletter-feedback {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  min-height: 1.4rem;
+  transition: all 0.3s;
+}
+
+.newsletter-feedback.error {
+  color: #b94a48;
+}
+
+.newsletter-feedback.success {
+  color: var(--plum);
+  font-weight: 500;
+}
+
+/* =====================================================
+   LUXURY TOAST NOTIFICATION
+===================================================== */
+.elossence-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--plum);
+  color: var(--ivory);
+  padding: 1rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border-left: 3px solid var(--rose);
+  z-index: 10000;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.elossence-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.elossence-toast .toast-icon {
+  color: var(--rose);
+  font-size: 1.1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  .thankyou-perks {
+    grid-template-columns: 1fr;
+  }
+  .thankyou-card {
+    padding: 3rem 1.5rem;
+  }
+}

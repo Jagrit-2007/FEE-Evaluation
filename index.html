@@ -6,6 +6,14 @@
 <title>Elossence | Premium Fashion Showcase</title>
 <!-- Linked Stylesheet -->
 <link rel="stylesheet" href="style.css">
+<!-- Prevent replaying intro animation when navigating to Home -->
+<script>
+  if (sessionStorage.getItem('elossence_intro_seen')) {
+    document.write('<style>#ellosence-intro { display: none !important; }</style>');
+  } else {
+    sessionStorage.setItem('elossence_intro_seen', 'true');
+  }
+</script>
 </head>
 <body>
   
@@ -61,6 +69,7 @@
         <a href="men/men.html">Men</a>
         <a href="women/index.html">Women</a>
         <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
       </nav>
 
       <!-- Login & sign up -->
@@ -121,7 +130,7 @@
       </div>
       <h3 class="serif">The Men's Edit</h3>
       <p>Sharp tailoring and brooding silhouettes for the modern gentleman.</p>
-      <a href="#" class="link-arrow-dark">Explore Collection</a>
+      <a href="men/men.html" class="link-arrow-dark">Explore Collection</a>
     </div>
     
     <!-- Women section -->
@@ -131,7 +140,7 @@
       </div>
       <h3 class="serif">The Women's Edit</h3>
       <p>Delicate fluidity meets architectural structure.</p>
-      <a href="#" class="link-arrow-dark">Explore Collection</a>
+      <a href="women/index.html" class="link-arrow-dark">Explore Collection</a>
     </div>
   </section>
 
@@ -142,7 +151,7 @@
   </section>
 
   <!-- Trending Now -->
-  <section class="trending container">
+  <section id="trending" class="trending container">
     <h2 class="section-title serif">Trending Now</h2>
     <div class="grid-4">
       <div class="product-card">
@@ -201,10 +210,11 @@
   <section class="container newsletter">
     <h2 class="serif">Join the Inner Circle</h2>
     <p>Subscribe to receive updates on exclusive runway releases, styling inspirations, and private atelier viewings.</p>
-    <div class="form-group">
-      <input type="email" placeholder="Enter your email address">
-      <button>Subscribe</button>
-    </div>
+    <form id="newsletter-form" class="form-group" novalidate>
+      <input type="email" id="newsletter-email" placeholder="Enter your email address" required autocomplete="email">
+      <button type="submit" id="newsletter-btn">Subscribe</button>
+    </form>
+    <div id="newsletter-msg" class="newsletter-feedback"></div>
   </section>
 
   <!-- Footer -->
@@ -242,10 +252,10 @@
         <div class="footer-links">
           <h4>Client Services</h4>
           <ul>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Bespoke Appointments</a></li>
-            <li><a href="#">Garment Care</a></li>
-            <li><a href="#">Private Viewing</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html">Bespoke Appointments</a></li>
+            <li><a href="about.html">Garment Care</a></li>
+            <li><a href="contact.html">Private Viewing</a></li>
           </ul>
         </div>
       </div>
@@ -255,17 +265,7 @@
     </div>
   </footer>
 
-  <!-- Vanilla JS for Hamburger Menu -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.nav-links');
-
-      hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-    });
-  </script>
+  <!-- Shared JS Engine -->
+  <script src="script.js"></script>
 </body>
 </html>

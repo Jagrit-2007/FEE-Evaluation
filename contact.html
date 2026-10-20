@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Elossence Luxury Fashion Atelier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo-area" onclick="window.location.href='index.html'" style="cursor: pointer;">
+        <div class="logo-mark">
+          <span class="loop loop-left"></span>
+          <span class="loop loop-right"></span>
+        </div>
+        <span class="logo-text">elossence</span>
+      </div>
+      
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="men/men.html">Men</a>
+        <a href="women/index.html">Women</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html" class="active">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button class="dark" onclick="window.location.href='signup.html'">Sign Up</button>
+      </div>
+      
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <h1 class="serif">Client Services & Concierge</h1>
+    <p>Whether you require personalized styling guidance, inquiries on our curated edits, or bespoke concierge assistance, the Elossence Maison is devoted to attending to your wishes.</p>
+  </section>
+
+  <!-- Contact Main Layout -->
+  <main class="container contact-wrapper">
+    <div class="contact-grid">
+      
+      <!-- Left Panel: Atelier & Client Care Info -->
+      <aside class="contact-info-panel">
+        <h3 class="serif">Maison Elossence</h3>
+        <p>Curating timeless elegance and contemporary silhouettes. Our dedicated concierge team is at your disposal for all styling inquiries and personal consultations.</p>
+
+        <div class="info-item">
+          <div class="info-label">Direct Atelier Correspondence</div>
+          <div class="info-val">
+            <a href="mailto:concierge@elossence.com">concierge@elossence.com</a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Concierge Hours (GMT)</div>
+          <div class="info-val">Monday &ndash; Saturday: 09:00 &ndash; 20:00<br>Sunday: Private Appointments Only</div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Flagship Showroom</div>
+          <div class="info-val">14 Rue de la Paix, 75002 Paris<br>Mayfair Showcase, London W1K</div>
+        </div>
+
+        <div class="atelier-services">
+          <h4 class="serif">Specialist Services</h4>
+          <ul>
+            <li>Personalized Wardrobe Curation</li>
+            <li>Runway & Editorial Consultation</li>
+            <li>Private Atelier Appointments</li>
+            <li>Garment Care & Fabric Advisory</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Right Panel: Interactive Contact Form -->
+      <section class="contact-form-panel">
+        <h3 class="serif">Send a Message</h3>
+        <p>Complete the form below and our styling concierge will respond within 24 business hours.</p>
+
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="contactName">Your Name *</label>
+              <input type="text" id="contactName" placeholder="e.g. Eleanor Vance" required autocomplete="name">
+              <div class="field-error-text" id="error-name"></div>
+            </div>
+
+            <div class="form-field">
+              <label for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" placeholder="e.g. eleanor@maison.com" required autocomplete="email">
+              <div class="field-error-text" id="error-email"></div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="contactSubject">Subject of Inquiry *</label>
+            <select id="contactSubject" required>
+              <option value="" disabled selected>Please select a subject...</option>
+              <option value="Personal Styling Advice">Personal Styling Consultation</option>
+              <option value="Curated Collection Inquiry">Curated Collection & Outfit Inquiries</option>
+              <option value="Bespoke Private Appointment">Bespoke Private Showroom Appointment</option>
+              <option value="Editorial & Press">Editorial, Press & Brand Partnerships</option>
+              <option value="General Feedback">General Client Services Feedback</option>
+            </select>
+            <div class="field-error-text" id="error-subject"></div>
+          </div>
+
+          <div class="form-field">
+            <label for="contactMessage">Your Message *</label>
+            <textarea id="contactMessage" rows="6" placeholder="Describe your inquiry, sizing preference, or desired styling guidance..." required></textarea>
+            <div class="field-error-text" id="error-message"></div>
+          </div>
+
+          <button type="submit" class="btn-contact-submit">Send Inquiry</button>
+        </form>
+
+        <!-- Dynamic Success State -->
+        <div id="contactSuccess" class="contact-success-state">
+          <div class="success-icon">&#10003;</div>
+          <h3 class="serif">Thank You, <span id="successClientName">Valued Client</span></h3>
+          <p>Your correspondence has been received by our private concierge team. A dedicated consultant will review your request and reply to <strong id="successClientEmail" style="color: var(--plum);">your email</strong> shortly.</p>
+          <div class="contact-ticket">Inquiry Reference: <span id="successTicketId">#ELO-849201</span></div>
+          <div>
+            <button type="button" id="btnResetContact" class="btn-thankyou-secondary" style="cursor: pointer;">Submit Another Inquiry</button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo-area" style="margin-bottom: 1rem;">
+            <div class="logo-mark">
+              <span class="loop loop-left"></span>
+              <span class="loop loop-right"></span>
+            </div>
+            <span class="logo-text">elossence</span>
+          </div>
+          <p>Elevating everyday style with delicate, luxurious essentials designed for the modern aesthetic.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Discover</h4>
+          <ul>
+            <li><a href="index.html#heritage">Heritage Collection</a></li>
+            <li><a href="women/index.html">Women's Showcase</a></li>
+            <li><a href="men/men.html">Men's Showcase</a></li>
+            <li><a href="index.html#trending">Editorials</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Maison</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="about.html">Ateliers</a></li>
+            <li><a href="about.html">Craftsmanship</a></li>
+            <li><a href="about.html">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Client Services</h4>
+          <ul>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html">Bespoke Appointments</a></li>
+            <li><a href="about.html">Garment Care</a></li>
+            <li><a href="contact.html">Private Viewing</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Elossence. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Engine -->
+  <script src="script.js"></script>
+</body>
+</html>
