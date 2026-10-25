@@ -37,32 +37,91 @@
   <div class="section-tag">Outfits you can try</div>
   <div class="section-sub">A few more casual looks to mix and match</div>
   <div class="more-grid">
-    <div class="card">
-      <img src="images/c1.jpg" alt="Plain tee + straight jeans + sneakers">
-      <div class="card-cap">Plain tee + straight jeans + sneakers</div>
-    </div>
-    <div class="card">
-      <img src="images/c2.jpg" alt="Overshirt + tee + chinos">
-      <div class="card-cap">Overshirt + tee + chinos</div>
-    </div>
-    <div class="card">
-      <img src="images/c3.jpg" alt="Denim jacket + tee + joggers">
-      <div class="card-cap">Denim jacket + tee + joggers</div>
-    </div>
-    <div class="card">
-      <img src="images/c4.jpg" alt="Henley + relaxed trousers">
-      <div class="card-cap">Henley + relaxed trousers</div>
-    </div>
-    <div class="card">
-      <img src="images/c5.jpg" alt="Polo + shorts + loafers">
-      <div class="card-cap">Polo + shorts + loafers</div>
-    </div>
-    <div class="card">
-      <img src="images/c6.jpg" alt="Crewneck sweater + denim">
-      <div class="card-cap">Crewneck sweater + denim</div>
-    </div>
+    <!-- ```html -->
+<div class="card">
+  <div class="outfit-image">
+    <img src="images/c1.jpg" alt="Plain tee + straight jeans + sneakers">
+
+    <button class="wishlist-btn"
+      onclick="toggleWishlist(this, 'c1', 'Plain tee + straight jeans + sneakers', 'images/c1.jpg', 'Men')">
+      ♡
+    </button>
   </div>
+
+  <div class="card-cap">Plain tee + straight jeans + sneakers</div>
+</div>
+<!-- ``` -->
+    
+
+
+<div class="card">
+    <div class="outfit-image">
+        <img src="images/c2.jpg" alt="Overshirt + tee + chinos">
+
+        <button class="wishlist-btn"
+            onclick="toggleWishlist(this, 'c2', 'Overshirt + tee + chinos', 'images/c2.jpg', 'Men')">
+            ♡
+        </button>
+    </div>
+
+    <div class="card-cap">Overshirt + tee + chinos</div>
 </div>
 
+
+<div class="card">
+    <div class="outfit-image">
+      <img src="images/c3.jpg" alt="Denim jacket + tee + joggers">
+
+        <button class="wishlist-btn"
+            onclick="toggleWishlist(this, 'c3', 'Denim jacket + tee + joggers', 'images/c3.jpg', 'Men')">
+            ♡
+        </button>
+    </div>
+
+    <div class="card-cap">Denim jacket + tee + joggers</div>
+</div>
+
+<div class="card">
+    <div class="outfit-image">
+        <img src="images/c4.jpg" alt="Henley + relaxed trousers">
+
+        <button class="wishlist-btn"
+            onclick="toggleWishlist(this, 'c4', 'Henley + relaxed trousers', 'images/c4.jpg', 'Men')">
+            ♡
+        </button>
+    </div>
+
+    <div class="card-cap">Henley + relaxed trousers</div>
+</div>
+
+
+<div class="card">
+    <div class="outfit-image">
+        <img src="images/c5.jpg" alt="Polo + shorts + loafers">
+
+        <button class="wishlist-btn"
+            onclick="toggleWishlist(this, 'c5', 'Polo + shorts + loafers', 'images/c5.jpg', 'Men')">
+            ♡
+        </button>
+    </div>
+
+    <div class="card-cap">Polo + shorts + loafers</div>
+</div>
+
+<div class="card">
+    <div class="outfit-image">
+        <img src="images/c6.jpg" alt="Crewneck sweater + denim">
+
+        <button class="wishlist-btn"
+            onclick="toggleWishlist(this, 'c6', 'Crewneck sweater + denim', 'images/c6.jpg', 'Men')">
+            ♡
+        </button>
+    </div>
+
+    <div class="card-cap">Crewneck sweater + denim</div>
+</div>
+
+
+<script src="../script.js"></script>
 </body>
 </html>

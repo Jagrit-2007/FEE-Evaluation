@@ -369,3 +369,149 @@ function updateNavSession() {
     console.warn('Session parse error:', err);
   }
 }
+
+
+
+// wishlist
+
+// Get saved outfits from localStorage
+function getWishlist() {
+  return JSON.parse(localStorage.getItem("elossence_wishlist")) || [];
+}
+
+// Save outfits to localStorage
+function saveWishlist(items) {
+  localStorage.setItem("elossence_wishlist", JSON.stringify(items));
+}
+
+// Update the number beside the navbar heart
+function updateWishlistCount() {
+  const count = getWishlist().length;
+
+  document.querySelectorAll(".wishlist-count").forEach(function (element) {
+    element.textContent = count;
+  });
+}
+
+// Add or remove an outfit
+function toggleWishlist(button, id, name, image, category) {
+  const items = getWishlist();
+
+  // Identify the outfit's page so different outfits don't clash
+  const pagePath = window.location.pathname;
+  const uniqueId = pagePath + "|" + id;
+
+  const existingIndex = items.findIndex(function (item) {
+    return item.id === uniqueId;
+  });
+
+  if (existingIndex !== -1) {
+    items.splice(existingIndex, 1);
+    button.classList.remove("active");
+    button.textContent = "♡";
+  } else {
+    // Make the image path work from wishlist.html
+    const folder = category.toLowerCase();
+const imagePath = image.startsWith("http")
+    ? image
+    : folder + "/" + image.replace(/^\.\//, "");    items.push({
+      id: uniqueId,
+      name: name,
+      image: imagePath,
+      category: category
+    });
+
+    button.classList.add("active");
+    button.textContent = "♥";
+  }
+
+  saveWishlist(items);
+  updateWishlistCount();
+
+  if (typeof showToast === "function") {
+    showToast(
+      existingIndex !== -1 ? "Removed from wishlist" : "Added to wishlist",
+      existingIndex !== -1 ? "♡" : "♥"
+    );
+  }
+
+  renderWishlist();
+}
+
+// Make saved hearts appear filled when a page opens
+function syncWishlistButtons() {
+  const items = getWishlist();
+  const pagePath = window.location.pathname;
+
+  document.querySelectorAll(".wishlist-btn").forEach(function (button) {
+   const match = button.getAttribute("onclick").match(
+  /toggleWishlist\(this,\s*'([^']+)'/
+);
+    if (!match) return;
+
+    const uniqueId = pagePath + "|" + match[1];
+    const saved = items.some(function (item) {
+      return item.id === uniqueId;
+    });
+
+    button.classList.toggle("active", saved);
+    button.textContent = saved ? "♥" : "♡";
+  });
+}
+
+// Display saved outfits on wishlist.html
+function renderWishlist() {
+  const container = document.getElementById("wishlist-items");
+
+  if (!container) return;
+
+  const items = getWishlist();
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="empty-wishlist">
+        <h2>Your wishlist is empty ♡</h2>
+        <p>Explore outfits and tap a heart to save your favourites.</p>
+        <a href="men/men.html">Explore men's fashion</a>
+        &nbsp; | &nbsp;
+        <a href="women/index.html">Explore women's fashion</a>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = items.map(function (item) {
+    return `
+      <div class="wishlist-card">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="wishlist-info">
+          <h3>${item.name}</h3>
+          <p>${item.category} fashion</p>
+          <button class="remove-wishlist"
+            onclick="removeFromWishlist('${item.id}')">
+            Remove ♡
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Remove an outfit from the wishlist
+function removeFromWishlist(id) {
+  const items = getWishlist().filter(function (item) {
+    return item.id !== id;
+  });
+
+  saveWishlist(items);
+  updateWishlistCount();
+  renderWishlist();
+  syncWishlistButtons();
+}
+
+// Run when the page loads
+document.addEventListener("DOMContentLoaded", function () {
+  updateWishlistCount();
+  syncWishlistButtons();
+  renderWishlist();
+});

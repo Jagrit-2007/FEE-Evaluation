@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Wishlist | Elossence</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .wishlist-page {
+      padding: 50px 7%;
+      min-height: 70vh;
+      background: #FBF3EF;
+      color: #4B3230;
+    }
+
+    .wishlist-page h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .wishlist-subtitle {
+      margin-bottom: 30px;
+    }
+
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .wishlist-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .wishlist-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wishlist-info {
+      padding: 16px;
+    }
+
+    .wishlist-info h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+    }
+
+    .wishlist-info p {
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .remove-wishlist {
+      border: 1px solid #7A5450;
+      background: transparent;
+      color: #4B3230;
+      padding: 9px 14px;
+      cursor: pointer;
+    }
+
+    .remove-wishlist:hover {
+      background: #4B3230;
+      color: white;
+    }
+
+    .empty-wishlist {
+      padding: 35px 0;
+      line-height: 1.8;
+    }
+
+    .empty-wishlist a {
+      color: #7A5450;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="wishlist-page">
+    <h1>My Wishlist ♡</h1>
+
+    <p class="wishlist-subtitle">
+      Your favourite looks, all in one place.
+    </p>
+
+    <div id="wishlist-items" class="wishlist-grid"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
