@@ -79,6 +79,9 @@
     .auth-form-container { padding: 4rem 5%; }
     .nav-links { display: none; }
   }
+  .form-message { min-height: 1.2rem; font-size: 0.9rem; margin-top: -0.5rem; }
+  .form-message.error { color: #b3392f; }
+  .form-message.success { color: #3d7a4f; }
 </style>
 </head>
 <body>
@@ -105,10 +108,11 @@
       <h2 class="serif">Join the Inner Circle</h2>
       <p>Create an account for exclusive access to editorial releases.</p>
       
-      <form class="auth-form">
+      <form class="auth-form" id="signupForm" novalidate>
         <input type="text" placeholder="Full Name" required>
         <input type="email" placeholder="Email Address" required>
         <input type="password" placeholder="Create Password" required>
+        <p class="form-message" id="formMessage" role="alert"></p>
         <button type="submit" class="dark">Create Account</button>
       </form>
       
@@ -117,6 +121,6 @@
       </div>
     </div>
   </section>
-  <script src="script.js"></script>
+  <script src="loginsign.js"></script>
 </body>
 </html>

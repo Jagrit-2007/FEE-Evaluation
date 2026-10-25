@@ -56,6 +56,9 @@
     .auth-form-container { padding: 4rem 5%; }
     .nav-links { display: none; }
   }
+  .form-message { min-height: 1.2rem; font-size: 0.9rem; margin-top: -0.5rem; }
+  .form-message.error { color: #b3392f; }
+  .form-message.success { color: #3d7a4f; }
 </style>
 </head>
 <body>
@@ -83,9 +86,10 @@
       <h2 class="serif">Welcome Back</h2>
       <p>Enter your details to access your inner circle account.</p>
       
-      <form class="auth-form">
+      <form class="auth-form" id="loginForm" novalidate>
         <input type="email" placeholder="Email Address" required>
         <input type="password" placeholder="Password" required>
+        <p class="form-message" id="formMessage" role="alert"></p>
         <button type="submit" class="dark">Sign In</button>
       </form>
       
@@ -95,6 +99,6 @@
       </div>
     </div>
   </section>
-  <script src="script.js"></script>
+  <script src="loginsign.js"></script>
 </body>
 </html>
