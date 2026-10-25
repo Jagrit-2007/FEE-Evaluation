@@ -221,3 +221,34 @@ a{ text-decoration:none; color:inherit; }
   .hero-text h1{ font-size: 1.9rem; }
   .more-grid{ grid-template-columns: 1fr; }
 }
+
+
+
+.outfit-image {
+    position: relative;
+    width: 100%;
+}
+
+.outfit-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #fffaf6;
+    color: #4B3230;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
