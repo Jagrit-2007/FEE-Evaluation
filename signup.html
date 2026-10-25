@@ -4,80 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sign Up | Elossence</title>
+<link rel="stylesheet" href="style.css">
 <style>
-  /* ===== INTERNAL CSS ===== */
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
-
-  :root {
-    --ivory: #FBF3EF;
-    --plum: #4B3230;
-    --plum-soft: #7A5450;
-    --rose: #C1877E;
-    --bg-alt: #f4eae4;
-  }
-
-  * { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0;
-}
-  body { 
-    background-color: var(--ivory); 
-    color: var(--plum); 
-    font-family: 'Jost', sans-serif; 
-    -webkit-font-smoothing: antialiased; 
-    overflow-x: hidden; 
-}
-  h1, h2, h3, h4, .serif { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-weight: 500; 
-}
-  a { 
-    text-decoration: none;
-    color: inherit; 
-    transition: 
-    color 0.3s; 
-}
-  a:hover { 
-    color: var(--rose); 
-}
-  .container { 
-    max-width: 1400px; 
-    margin: 0 auto; 
-    padding: 0 5%; }
-
-  /* Header Styles */
-  header { padding: 1.5rem 0; border-bottom: 1px solid rgba(75, 50, 48, 0.1); background: var(--ivory); }
-  .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-  .logo-area { display: flex; align-items: center; gap: 1rem; }
-  
-  /* Original Index.html Logo Font */
-  .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: 0.3em; text-transform: lowercase; color: var(--plum); }
-  
-  .logo-mark { display: flex; align-items: center; }
-  .logo-mark .loop { display: block; width: 22px; height: 22px; border: 2px solid var(--rose); border-radius: 50%; }
-  .logo-mark .loop-right { margin-left: -9px; }
-  .nav-links { display: flex; gap: 2rem; font-size: 13px; letter-spacing: 0.05em; text-transform: uppercase; }
-
   /* Auth Specific Styles */
   .auth-wrapper { display: flex; min-height: calc(100vh - 86px); }
   .auth-image { flex: 1; background-color: var(--bg-alt); }
   .auth-form-container { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 10%; }
   .auth-form-container h2 { font-size: 3rem; margin-bottom: 0.5rem; }
-  .auth-form-container > p { color: var(--plum-soft); margin-bottom: 3rem; font-size: 1.1rem; }
+  .auth-form-container > p { color: var(--plum-soft); margin-bottom: 2.5rem; font-size: 1.1rem; }
   
   .auth-form { display: flex; flex-direction: column; gap: 1.5rem; }
   .auth-form input { padding: 1rem; background: transparent; border: none; border-bottom: 1px solid rgba(75, 50, 48, 0.3); font-family: 'Jost', sans-serif; color: var(--plum); font-size: 1rem; outline: none; transition: border-color 0.3s; }
   .auth-form input:focus { border-bottom-color: var(--plum); }
-  .auth-form button { margin-top: 1.5rem; padding: 1.2rem; background: var(--plum); color: var(--ivory); border: none; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: background 0.3s; }
+  .auth-form button { margin-top: 1rem; padding: 1.2rem; background: var(--plum); color: var(--ivory); border: none; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: background 0.3s; font-size: 13px; font-weight: 500; }
   .auth-form button:hover { background: var(--rose); }
-  .auth-links { margin-top: 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; }
+  .auth-links { margin-top: 2rem; display: flex; justify-content: space-between; font-size: 0.9rem; flex-wrap: wrap; gap: 10px; }
 
   @media(max-width: 768px) {
     .auth-wrapper { flex-direction: column; }
     .auth-image { min-height: 30vh; }
     .auth-form-container { padding: 4rem 5%; }
-    .nav-links { display: none; }
   }
   .form-message { min-height: 1.2rem; font-size: 0.9rem; margin-top: -0.5rem; }
   .form-message.error { color: #b3392f; }
@@ -87,7 +33,7 @@
 <body>
   <header>
     <div class="container nav-wrapper">
-      <div class="logo-area">
+      <div class="logo-area" onclick="window.location.href='index.html'" style="cursor: pointer;">
         <div class="logo-mark"><span class="loop loop-left"></span><span class="loop loop-right"></span></div>
         <span class="logo-text">elossence</span>
       </div>
@@ -97,30 +43,46 @@
         <a href="women/index.html">Women</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
+        <a href="index.html#recently-viewed">Recently Viewed</a>
+        <a href="wishlist.html" class="wishlist-nav">
+          <span class="nav-heart">♡</span>
+          <span class="wishlist-count">0</span>
+        </a>
       </nav>
+      <div class="nav-actions">
+        <button onclick="window.location.href='login.html'">Login</button>
+        <button class="dark" onclick="window.location.href='signup.html'">Sign Up</button>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </header>
 
   <section class="auth-wrapper">
-    <!-- Using your uploaded image for the sign up screen -->
     <div class="auth-image" style="background: url('https://plus.unsplash.com/premium_photo-1664202526559-e21e9c0fb46a?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZmFzaGlvbnxlbnwwfHwwfHx8MA%3D%3D') center/cover;"></div>    
-      <div class="auth-form-container">
+    <div class="auth-form-container">
       <h2 class="serif">Join the Inner Circle</h2>
       <p>Create an account for exclusive access to editorial releases.</p>
       
       <form class="auth-form" id="signupForm" novalidate>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="password" placeholder="Create Password" required>
+        <input type="text" id="signupName" placeholder="Full Name" required autocomplete="name">
+        <input type="email" id="signupEmail" placeholder="Email Address" required autocomplete="email">
+        <input type="password" id="signupPassword" placeholder="Create Password (min. 6 chars)" required autocomplete="new-password">
         <p class="form-message" id="formMessage" role="alert"></p>
         <button type="submit" class="dark">Create Account</button>
       </form>
       
       <div class="auth-links">
-        <p>Already a member? <a href="login.html" style="color: var(--rose);">Log In</a></p>
+        <p>Already a member? <a href="login.html" style="color: var(--rose); font-weight: 500;">Sign In</a></p>
       </div>
     </div>
   </section>
+
+  <script src="users.js"></script>
+  <script src="script.js"></script>
   <script src="loginsign.js"></script>
 </body>
 </html>

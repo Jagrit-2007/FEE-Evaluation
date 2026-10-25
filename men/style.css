@@ -222,7 +222,6 @@ a{ text-decoration:none; color:inherit; }
   .more-grid{ grid-template-columns: 1fr; }
 }
 
-/* ```css */
 .outfit-image {
   position: relative;
 }
@@ -244,5 +243,53 @@ a{ text-decoration:none; color:inherit; }
   color: #4B3230;
   font-size: 24px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-/* ``` */
+
+.wishlist-btn:hover {
+  transform: scale(1.15);
+  background: #ffffff;
+}
+
+.wishlist-btn.active, .wishlist-btn.is-saved {
+  color: #C1877E !important;
+  background: #ffffff !important;
+}
+
+/* Luxury Toast Notification */
+.elossence-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: rgba(46, 35, 32, 0.94);
+  color: #FAF6EF;
+  padding: 14px 22px;
+  border-radius: 4px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.2);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  border: 1px solid rgba(193, 135, 126, 0.3);
+}
+
+.elossence-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.elossence-toast .toast-icon {
+  color: #C1877E;
+  font-size: 1.1rem;
+}

@@ -70,11 +70,11 @@
         <a href="women/index.html">Women</a>
         <a href="about.html">About Us</a>
         <a href="contact.html">Contact Us</a>
+        <a href="#recently-viewed" class="nav-recently">Recently Viewed</a>
         <a href="wishlist.html" class="wishlist-nav">
-    <span class="nav-heart">♡</span>
-    <span class="wishlist-count">0</span>
-</a>
-
+          <span class="nav-heart">♡</span>
+          <span class="wishlist-count">0</span>
+        </a>
       </nav>
 
       <!-- Login & sign up -->
@@ -99,7 +99,10 @@
     <div class="cinematic-content">
       <h1>Elevate Your Style, <br><i>Express Your You.</i></h1>
       <p>Discover timeless pieces and modern essentials crafted for every moment of your life.</p>
-      <a href="#" class="btn-light">VIEW SHOWCASE</a>
+      <div class="hero-cta-group">
+        <a href="#trending" class="btn-light">VIEW SHOWCASE</a>
+        <a href="#recently-viewed" class="btn-outline-light">RECENTLY VIEWED</a>
+      </div>
     </div>
   </section>
 
@@ -131,7 +134,7 @@
   <section class="container collections">
     <div class="collection-block">
       <div class="collection-img-wrap">
-        <img src="images/menSection.jpg" alt="Men Collection">
+        <img src="images/signatureMen.jpeg" alt="The Men's Edit">
       </div>
       <h3 class="serif">The Men's Edit</h3>
       <p>Sharp tailoring and brooding silhouettes for the modern gentleman.</p>
@@ -141,7 +144,7 @@
     <!-- Women section -->
     <div class="collection-block">
       <div class="collection-img-wrap">
-        <img src="images/womenSection.webp" alt="Women Collection">
+        <img src="images/toppick.jpeg" alt="The Women's Edit">
       </div>
       <h3 class="serif">The Women's Edit</h3>
       <p>Delicate fluidity meets architectural structure.</p>
@@ -159,32 +162,47 @@
   <section id="trending" class="trending container">
     <h2 class="section-title serif">Trending Now</h2>
     <div class="grid-4">
-      <div class="product-card">
-        <img src="images/noirBlazer.webp" alt="Trending 1">
+      <div class="product-card" onclick="trackTrendingClick('trend-noir', 'Noir Structured Blazer', 'Women · Tailoring', 'images/noirWomen.jpeg', 'women/formal.html')">
+        <div class="trending-img-wrap">
+          <img src="images/noirWomen.jpeg" alt="Noir Structured Blazer">
+          <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'trend-noir', 'Noir Structured Blazer', 'images/noirWomen.jpeg', 'Women')" title="Save to Wishlist">♡</button>
+        </div>
         <div class="product-info">
           <h4 class="serif">Noir Structured Blazer</h4>
-          <p>Archival Silhouette</p>
+          <p>Archival Silhouette &middot; <span class="trend-link">Explore &rarr;</span></p>
         </div>
       </div>
-      <div class="product-card">
-        <img src="images/organzaWrap.jpeg" alt="Trending 2">
+
+      <div class="product-card" onclick="trackTrendingClick('trend-organza', 'Organza Silk Wrap', 'Women · Couture', 'images/ivoryWomen.jpeg', 'women/traditional.html')">
+        <div class="trending-img-wrap">
+          <img src="images/ivoryWomen.jpeg" alt="Organza Silk Wrap">
+          <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'trend-organza', 'Organza Silk Wrap', 'images/ivoryWomen.jpeg', 'Women')" title="Save to Wishlist">♡</button>
+        </div>
         <div class="product-info">
           <h4 class="serif">Organza Silk Wrap</h4>
-          <p>Bespoke Tailoring</p>
+          <p>Bespoke Tailoring &middot; <span class="trend-link">Explore &rarr;</span></p>
         </div>
       </div>
-      <div class="product-card">
-        <img src="images/longOverCoat.jpg" alt="Trending 3">
+
+      <div class="product-card" onclick="trackTrendingClick('trend-overcoat', 'Cashmere Monochrome Overcoat', 'Men · Outerwear', 'images/cash,mereOvercoatMen.jpeg', 'men/formal.html')">
+        <div class="trending-img-wrap">
+          <img src="images/cash,mereOvercoatMen.jpeg" alt="Cashmere Monochrome Overcoat">
+          <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'trend-overcoat', 'Cashmere Monochrome Overcoat', 'images/cash,mereOvercoatMen.jpeg', 'Men')" title="Save to Wishlist">♡</button>
+        </div>
         <div class="product-info">
           <h4 class="serif">Monochrome Overcoat</h4>
-          <p>Winter '26 Preview</p>
+          <p>Winter '26 Preview &middot; <span class="trend-link">Explore &rarr;</span></p>
         </div>
       </div>
-      <div class="product-card">
-        <img src="images/linenResortSuit.webp" alt="Trending 4">
+
+      <div class="product-card" onclick="trackTrendingClick('trend-linen', 'Pleated Linen Resort Trousers', 'Men · Mediterranean', 'images/pleatedtrousersMen.jpeg', 'men/casual.html')">
+        <div class="trending-img-wrap">
+          <img src="images/pleatedtrousersMen.jpeg" alt="Pleated Linen Resort Trousers">
+          <button class="wishlist-btn" onclick="event.stopPropagation(); toggleWishlist(this, 'trend-linen', 'Pleated Linen Resort Trousers', 'images/pleatedtrousersMen.jpeg', 'Men')" title="Save to Wishlist">♡</button>
+        </div>
         <div class="product-info">
           <h4 class="serif">Linen Resort Suit</h4>
-          <p>Mediterranean Series</p>
+          <p>Mediterranean Series &middot; <span class="trend-link">Explore &rarr;</span></p>
         </div>
       </div>
     </div>
@@ -210,6 +228,21 @@
       </div>
     </section>
   </div>
+
+  <!-- Recently Viewed Section -->
+  <section id="recently-viewed" class="recently-viewed-section">
+    <div class="container">
+      <div class="recently-viewed-header">
+        <div class="recently-viewed-header-left">
+          <h2 class="serif">Recently Viewed</h2>
+          <p>Curated pieces and silhouettes you've recently explored</p>
+        </div>
+        <button id="btnClearRecent" class="btn-clear-recent" onclick="clearRecentlyViewed()">Clear History</button>
+      </div>
+      <div id="recently-viewed-container"></div>
+    </div>
+  </section>
+
 
   <!-- Newsletter -->
   <section class="container newsletter">
@@ -271,6 +304,7 @@
   </footer>
 
   <!-- Shared JS Engine -->
+  <script src="users.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

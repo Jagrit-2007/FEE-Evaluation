@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initThankYouPage();
   updateNavSession();
+  updateWishlistCount();
+  syncWishlistButtons();
+  renderWishlist();
+  initRecentlyViewedAutoTrack();
+  initOutfitCardTracking();
+  renderRecentlyViewed();
 });
 
 /* =====================================================
@@ -18,16 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
 function initIntroAnimation() {
   const intro = document.getElementById('ellosence-intro');
   if (intro && intro.style.display !== 'none') {
-    // After animation finishes (3.2s delay + 1.2s fade), remove from layout
     setTimeout(() => {
       if (intro) intro.style.display = 'none';
     }, 4500);
   }
-  // Record that the session has started so intro never replays when clicking Home
   try {
     sessionStorage.setItem('elossence_intro_seen', 'true');
   } catch (e) {
-    /* ignore private mode storage blocks */
+    /* ignore storage blocks */
   }
 }
 
@@ -48,7 +52,7 @@ function showToast(message, icon = '✦') {
   clearTimeout(toast._timeout);
   toast._timeout = setTimeout(() => {
     toast.classList.remove('show');
-  }, 4200);
+  }, 3500);
 }
 
 /* =====================================================
@@ -64,7 +68,6 @@ function initHamburger() {
       navLinks.classList.toggle('active');
     });
 
-    // Close when clicking outside
     document.addEventListener('click', (e) => {
       if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
         hamburger.classList.remove('active');
@@ -82,7 +85,6 @@ function initNewsletter() {
   const emailInput = document.getElementById('newsletter-email');
   const feedbackMsg = document.getElementById('newsletter-msg');
 
-  // Fallback for generic newsletter markup if IDs are not present
   const fallbackSection = document.querySelector('.newsletter');
   const targetForm = form || (fallbackSection ? fallbackSection.querySelector('.form-group') : null);
   const targetInput = emailInput || (fallbackSection ? fallbackSection.querySelector('input[type="email"]') : null);
@@ -105,7 +107,6 @@ function initNewsletter() {
       return;
     }
 
-    // Save subscriber to localStorage
     try {
       const stored = localStorage.getItem('elossence_subscribers');
       const subscribers = stored ? JSON.parse(stored) : [];
@@ -127,8 +128,9 @@ function initNewsletter() {
 
     setFeedback('Preparing your invitation...', false);
 
-    // Redirect to Thank You page
-    const targetUrl = `thankyou.html?email=${encodeURIComponent(cleanEmail)}`;
+    const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+    const isInSubfolder = normalizedPath.includes('/men/') || normalizedPath.includes('/women/');
+    const targetUrl = (isInSubfolder ? '../' : '') + `thankyou.html?email=${encodeURIComponent(cleanEmail)}`;
     setTimeout(() => {
       window.location.href = targetUrl;
     }, 450);
@@ -142,11 +144,7 @@ function initNewsletter() {
       showToast(msg, isError ? '⚠' : '✓');
     }
     if (targetInput) {
-      if (isError) {
-        targetInput.style.borderColor = '#b94a48';
-      } else {
-        targetInput.style.borderColor = '';
-      }
+      targetInput.style.borderColor = isError ? '#b94a48' : '';
     }
   }
 
@@ -220,7 +218,6 @@ function initContactForm() {
     }
   }
 
-  // Live validation on blur
   Object.keys(fields).forEach(key => {
     const el = fields[key];
     if (el) {
@@ -254,7 +251,6 @@ function initContactForm() {
       submitBtn.disabled = true;
     }
 
-    // Generate ticket reference
     const ticketId = 'ELO-' + Math.floor(100000 + Math.random() * 900000);
     const inquiryData = {
       id: ticketId,
@@ -265,7 +261,6 @@ function initContactForm() {
       submittedAt: new Date().toISOString()
     };
 
-    // Save to localStorage
     try {
       const stored = localStorage.getItem('elossence_inquiries');
       const inquiries = stored ? JSON.parse(stored) : [];
@@ -276,7 +271,6 @@ function initContactForm() {
     }
 
     setTimeout(() => {
-      // Transition to success state
       contactForm.style.display = 'none';
       if (successState) {
         successState.style.display = 'block';
@@ -337,158 +331,294 @@ function updateNavSession() {
   const navActions = document.querySelector('.nav-actions');
   if (!navActions) return;
 
+  const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+  const isInSubfolder = normalizedPath.includes('/men/') || normalizedPath.includes('/women/');
+  const base = isInSubfolder ? '../' : '';
+
+  let user = null;
   try {
-    const rawUser = localStorage.getItem('elossence_current_user');
-    if (!rawUser) return;
+    const raw = localStorage.getItem('elossence_current_user');
+    if (raw) user = JSON.parse(raw);
+    if (!user) {
+      const email = localStorage.getItem('elossence_session');
+      if (email) {
+        const users = JSON.parse(localStorage.getItem('elossence_users')) || [];
+        const found = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+        if (found) user = { name: found.name, email: found.email };
+      }
+    }
+  } catch (e) {
+    user = null;
+  }
 
-    const user = JSON.parse(rawUser);
-    if (!user || !user.name) return;
-
-    // Check if we are inside a subfolder (men/ or women/)
-    const isInSubfolder = window.location.pathname.includes('/men/') || window.location.pathname.includes('/women/');
-    const homePath = isInSubfolder ? '../index.html' : 'index.html';
-
+  if (user && user.name) {
+    const firstName = user.name.split(' ')[0];
     navActions.innerHTML = `
-      <span style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--plum); display: flex; align-items: center; gap: 6px;">
-        <span style="color: var(--rose);">✦</span> ${user.name.split(' ')[0]}
+      <span id="navUserBadge" style="font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--plum); display: flex; align-items: center; gap: 6px; font-weight: 500; cursor: pointer;" title="Logged in as ${user.name} (${user.email})">
+        <span style="color: var(--rose);">✦</span> ${firstName}
       </span>
       <button id="navLogoutBtn" style="background: transparent; border: 1px solid var(--plum); color: var(--plum); padding: 0.4rem 0.9rem; font-size: 11px; letter-spacing: 0.1em; cursor: pointer; text-transform: uppercase; transition: all 0.3s ease;">Logout</button>
     `;
+
+    const userBadge = document.getElementById('navUserBadge');
+    if (userBadge) {
+      userBadge.addEventListener('click', () => {
+        showToast(`Account: ${user.name} (${user.email}) - Stored in localStorage`, '✦');
+      });
+    }
 
     const logoutBtn = document.getElementById('navLogoutBtn');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
         localStorage.removeItem('elossence_current_user');
+        localStorage.removeItem('elossence_session');
         showToast('Signed out of Elossence.', '✦');
         setTimeout(() => {
+          updateNavSession();
           window.location.reload();
-        }, 500);
+        }, 350);
       });
     }
-  } catch (err) {
-    console.warn('Session parse error:', err);
+  } else {
+    navActions.innerHTML = `
+      <button onclick="window.location.href='${base}login.html'">Login</button>
+      <button class="dark" onclick="window.location.href='${base}signup.html'">Sign Up</button>
+    `;
   }
 }
 
+/* =====================================================
+   7. WISHLIST ENGINE (LOCALSTORAGE)
+===================================================== */
 
+/**
+ * Resolves local image paths to the correct root relative path
+ */
+function resolveWishlistImagePath(image, category, name) {
+  if (!image) return "images/signatureMen.jpeg";
 
-// wishlist
+  // Map legacy picsum traditional placeholders to real local photos
+  if (image.includes("picsum.photos/seed/trad-0") || name === "Silk saree + statement jewellery") {
+    return "women/images2/traditional1.jpeg";
+  }
+  if (image.includes("picsum.photos/seed/trad-1") || name === "Anarkali suit + juttis") {
+    return "women/images2/traditional2.jpeg";
+  }
+  if (image.includes("picsum.photos/seed/trad-2") || name === "Lehenga choli + potli bag") {
+    return "women/images2/traditional3.jpeg";
+  }
+  if (image.includes("picsum.photos/seed/trad-3") || name === "Embroidered kurta + churidar") {
+    return "women/images2/traditional4.jpeg";
+  }
+  if (image.includes("picsum.photos/seed/trad-4") || name === "Banarasi dupatta + fitted blouse") {
+    return "women/images2/traditional5.jpeg";
+  }
+  if (image.includes("picsum.photos/seed/trad-5") || name === "Sharara set + oxidised jewellery") {
+    return "women/images2/traditional6.jpeg";
+  }
 
-// Get saved outfits from localStorage
+  if (image.startsWith("http://") || image.startsWith("https://") || image.startsWith("data:")) {
+    return image;
+  }
+
+  let clean = image.replace(/^\.\//, "").replace(/^\//, "");
+
+  // If already prefixed with women/ or men/
+  if (clean.startsWith("women/") || clean.startsWith("men/")) {
+    return clean;
+  }
+
+  // Root images list
+  const rootImages = [
+    "backImageMen.jpeg",
+    "cash,mereOvercoatMen.jpeg",
+    "ivoryWomen.jpeg",
+    "noirWomen.jpeg",
+    "onyxMen.jpeg",
+    "pleatedtrousersMen.jpeg",
+    "ribbedMockWOmen.jpeg",
+    "signatureMen.jpeg",
+    "signinImage.jpeg",
+    "toppick.jpeg",
+    "wideLegWomen.jpeg"
+  ];
+  const filename = clean.split("/").pop();
+  if (clean.startsWith("images/") && rootImages.includes(filename)) {
+    return clean;
+  }
+
+  const cat = (category || "").toLowerCase();
+  const currentPath = (typeof window !== "undefined" && window.location ? window.location.pathname.replace(/\\/g, "/") : "");
+  const isWomen = cat.includes("women") || currentPath.includes("/women/");
+  const isMen = cat.includes("men") || currentPath.includes("/men/");
+
+  if (isWomen) {
+    return "women/" + clean;
+  }
+  if (isMen) {
+    return "men/" + clean;
+  }
+
+  // Auto-detect based on file patterns
+  if (clean.startsWith("images2/") || clean.includes("streetwear") || clean.includes("casual")) {
+    return "women/" + clean;
+  }
+
+  return clean;
+}
+
+function handleWishlistImgError(img, origImage, category) {
+  if (img.dataset.failed) return;
+  img.dataset.failed = "true";
+
+  const clean = (origImage || "").replace(/^\.\//, "").replace(/^\//, "");
+  const cat = (category || "").toLowerCase();
+
+  if (cat.includes("women") && !clean.startsWith("women/")) {
+    img.src = "women/" + clean;
+    return;
+  }
+  if (cat.includes("men") && !clean.startsWith("men/")) {
+    img.src = "men/" + clean;
+    return;
+  }
+  img.src = "images/signatureMen.jpeg";
+}
+
 function getWishlist() {
-  return JSON.parse(localStorage.getItem("elossence_wishlist")) || [];
+  try {
+    let items = JSON.parse(localStorage.getItem("elossence_wishlist")) || [];
+    let updated = false;
+
+    // Auto-repair any stored items whose image paths were missing folder prefixes
+    items = items.map(item => {
+      if (!item || !item.image) return item;
+      const fixed = resolveWishlistImagePath(item.image, item.category, item.name);
+      if (fixed !== item.image) {
+        item.image = fixed;
+        updated = true;
+      }
+      return item;
+    });
+
+    if (updated) {
+      localStorage.setItem("elossence_wishlist", JSON.stringify(items));
+    }
+    return items;
+  } catch (e) {
+    return [];
+  }
 }
 
-// Save outfits to localStorage
 function saveWishlist(items) {
-  localStorage.setItem("elossence_wishlist", JSON.stringify(items));
+  try {
+    localStorage.setItem("elossence_wishlist", JSON.stringify(items));
+  } catch (e) {
+    console.warn("Storage error on wishlist:", e);
+  }
 }
 
-// Update the number beside the navbar heart
 function updateWishlistCount() {
   const count = getWishlist().length;
-
-  document.querySelectorAll(".wishlist-count").forEach(function (element) {
+  document.querySelectorAll(".wishlist-count").forEach(element => {
     element.textContent = count;
   });
 }
 
-// Add or remove an outfit
 function toggleWishlist(button, id, name, image, category) {
   const items = getWishlist();
+  const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+  const uniqueId = id || (normalizedPath + "|" + name);
 
-  // Identify the outfit's page so different outfits don't clash
-  const pagePath = window.location.pathname;
-  const uniqueId = pagePath + "|" + id;
-
-  const existingIndex = items.findIndex(function (item) {
-    return item.id === uniqueId;
-  });
+  const existingIndex = items.findIndex(item => item.id === uniqueId || (item.name === name && item.category === category));
 
   if (existingIndex !== -1) {
     items.splice(existingIndex, 1);
-    button.classList.remove("active");
-    button.textContent = "♡";
+    if (button) {
+      button.classList.remove("active");
+      button.classList.remove("is-saved");
+      button.textContent = "♡";
+    }
+    showToast(`Removed "${name}" from wishlist.`, "♡");
   } else {
-    // Make the image path work from wishlist.html
-    const folder = category.toLowerCase();
-const imagePath = image.startsWith("http")
-    ? image
-    : folder + "/" + image.replace(/^\.\//, "");    items.push({
+    const normalizedImage = resolveWishlistImagePath(image, category);
+
+    items.push({
       id: uniqueId,
       name: name,
-      image: imagePath,
+      image: normalizedImage,
       category: category
     });
 
-    button.classList.add("active");
-    button.textContent = "♥";
+    if (button) {
+      button.classList.add("active");
+      button.classList.add("is-saved");
+      button.textContent = "♥";
+    }
+    showToast(`Added "${name}" to wishlist.`, "♥");
   }
 
   saveWishlist(items);
   updateWishlistCount();
-
-  if (typeof showToast === "function") {
-    showToast(
-      existingIndex !== -1 ? "Removed from wishlist" : "Added to wishlist",
-      existingIndex !== -1 ? "♡" : "♥"
-    );
-  }
-
+  syncWishlistButtons();
   renderWishlist();
 }
 
-// Make saved hearts appear filled when a page opens
 function syncWishlistButtons() {
   const items = getWishlist();
-  const pagePath = window.location.pathname;
 
-  document.querySelectorAll(".wishlist-btn").forEach(function (button) {
-   const match = button.getAttribute("onclick").match(
-  /toggleWishlist\(this,\s*'([^']+)'/
-);
+  document.querySelectorAll(".wishlist-btn").forEach(button => {
+    const onclickAttr = button.getAttribute("onclick");
+    if (!onclickAttr) return;
+
+    const match = onclickAttr.match(/toggleWishlist\([^,]+,\s*'([^']+)'(?:,\s*'([^']+)')?/);
     if (!match) return;
 
-    const uniqueId = pagePath + "|" + match[1];
-    const saved = items.some(function (item) {
-      return item.id === uniqueId;
-    });
+    const targetId = match[1];
+    const targetName = match[2];
 
-    button.classList.toggle("active", saved);
-    button.textContent = saved ? "♥" : "♡";
+    const isSaved = items.some(item => item.id === targetId || (targetName && item.name === targetName));
+
+    button.classList.toggle("active", isSaved);
+    button.classList.toggle("is-saved", isSaved);
+    button.textContent = isSaved ? "♥" : "♡";
   });
 }
 
-// Display saved outfits on wishlist.html
 function renderWishlist() {
   const container = document.getElementById("wishlist-items");
-
   if (!container) return;
 
   const items = getWishlist();
 
   if (items.length === 0) {
     container.innerHTML = `
-      <div class="empty-wishlist">
-        <h2>Your wishlist is empty ♡</h2>
-        <p>Explore outfits and tap a heart to save your favourites.</p>
-        <a href="men/men.html">Explore men's fashion</a>
-        &nbsp; | &nbsp;
-        <a href="women/index.html">Explore women's fashion</a>
+      <div class="empty-wishlist" style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+        <h2 style="font-size: 2.5rem; color: var(--rose); margin-bottom: 10px;">Your wishlist is empty ♡</h2>
+        <p style="color: var(--plum-soft); margin-bottom: 24px; font-size: 1.05rem;">Explore curated looks and tap the heart on any outfit to save your favorites.</p>
+        <div>
+          <a href="men/men.html" style="color: var(--plum); border-bottom: 1px solid var(--rose); padding-bottom: 4px; margin-right: 20px; font-weight: 500;">Explore Men's Edit &rarr;</a>
+          <a href="women/index.html" style="color: var(--plum); border-bottom: 1px solid var(--rose); padding-bottom: 4px; font-weight: 500;">Explore Women's Edit &rarr;</a>
+        </div>
       </div>
     `;
     return;
   }
 
-  container.innerHTML = items.map(function (item) {
+  container.innerHTML = items.map(item => {
+    const resolvedImg = resolveWishlistImagePath(item.image, item.category, item.name);
+    let catText = item.category || "Women";
+    if (!catText.toUpperCase().includes("COLLECTION")) {
+      catText = catText + " Collection";
+    }
+
     return `
       <div class="wishlist-card">
-        <img src="${item.image}" alt="${item.name}">
+        <img src="${resolvedImg}" alt="${item.name}" onerror="handleWishlistImgError(this, '${item.image}', '${item.category}')">
         <div class="wishlist-info">
           <h3>${item.name}</h3>
-          <p>${item.category} fashion</p>
-          <button class="remove-wishlist"
-            onclick="removeFromWishlist('${item.id}')">
+          <p>${catText}</p>
+          <button class="remove-wishlist" onclick="removeFromWishlist('${item.id}')">
             Remove ♡
           </button>
         </div>
@@ -497,21 +627,271 @@ function renderWishlist() {
   }).join("");
 }
 
-// Remove an outfit from the wishlist
 function removeFromWishlist(id) {
-  const items = getWishlist().filter(function (item) {
-    return item.id !== id;
-  });
-
+  const items = getWishlist().filter(item => item.id !== id);
   saveWishlist(items);
   updateWishlistCount();
   renderWishlist();
   syncWishlistButtons();
+  showToast("Item removed from wishlist.", "♡");
 }
 
-// Run when the page loads
-document.addEventListener("DOMContentLoaded", function () {
-  updateWishlistCount();
-  syncWishlistButtons();
-  renderWishlist();
-});
+/* =====================================================
+   8. RECENTLY VIEWED ENGINE (LOCALSTORAGE)
+===================================================== */
+const RECENT_KEY = "elossence_recently_viewed";
+
+/**
+ * Returns recently viewed items. If storage is initially empty,
+ * seeds four elegant curated starter items so that outfits/files are ALWAYS visible!
+ */
+function getRecentlyViewed() {
+  try {
+    const raw = localStorage.getItem(RECENT_KEY);
+    if (!raw) {
+      const defaultRecent = [
+        {
+          id: "trend-noir",
+          name: "Noir Structured Blazer",
+          category: "Women · Formal",
+          image: "images/noirWomen.jpeg",
+          url: "women/formal.html",
+          timestamp: Date.now() - 3000
+        },
+        {
+          id: "men-casual",
+          name: "Men's Casual Minimalist Ensemble",
+          category: "Men · Casual",
+          image: "men/images/casual fr.jpg",
+          url: "men/casual.html",
+          timestamp: Date.now() - 2000
+        },
+        {
+          id: "trend-organza",
+          name: "Organza Silk Wrap",
+          category: "Women · Traditional",
+          image: "images/ivoryWomen.jpeg",
+          url: "women/traditional.html",
+          timestamp: Date.now() - 1000
+        },
+        {
+          id: "trend-overcoat",
+          name: "Cashmere Monochrome Overcoat",
+          category: "Men · Formal",
+          image: "images/cash,mereOvercoatMen.jpeg",
+          url: "men/formal.html",
+          timestamp: Date.now()
+        }
+      ];
+      localStorage.setItem(RECENT_KEY, JSON.stringify(defaultRecent));
+      return defaultRecent;
+    }
+    return JSON.parse(raw) || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveRecentlyViewed(items) {
+  try {
+    localStorage.setItem(RECENT_KEY, JSON.stringify(items));
+  } catch (e) {
+    console.warn("Storage error on recently viewed:", e);
+  }
+}
+
+/**
+ * Normalizes relative URLs and image paths based on current subfolder
+ */
+function resolvePath(path) {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path;
+  const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+  const isInSubfolder = normalizedPath.includes('/men/') || normalizedPath.includes('/women/');
+  if (isInSubfolder) {
+    return '../' + path.replace(/^\.\//, '');
+  }
+  return path.replace(/^\.\//, '');
+}
+
+/**
+ * Record a look into Recently Viewed (max 8 items, latest first)
+ */
+function addRecentlyViewed(item) {
+  if (!item || !item.name) return;
+
+  const items = getRecentlyViewed();
+  const filtered = items.filter(i => i.id !== item.id && i.name !== item.name);
+
+  filtered.unshift({
+    id: item.id || 'recent-' + Date.now(),
+    name: item.name,
+    category: item.category || 'Curated Look',
+    image: item.image,
+    url: item.url || '#',
+    timestamp: Date.now()
+  });
+
+  const capped = filtered.slice(0, 8);
+  saveRecentlyViewed(capped);
+  renderRecentlyViewed();
+}
+
+/**
+ * Clears Recently Viewed history
+ */
+function clearRecentlyViewed() {
+  localStorage.setItem(RECENT_KEY, JSON.stringify([]));
+  renderRecentlyViewed();
+  showToast('Recently viewed history cleared.', '✦');
+}
+
+/**
+ * Auto-detects outfit style page view (e.g. casual.html, formal.html, etc.)
+ */
+function initRecentlyViewedAutoTrack() {
+  const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+  const isMenSubfolder = normalizedPath.includes('/men/');
+  const isWomenSubfolder = normalizedPath.includes('/women/');
+
+  if (!isMenSubfolder && !isWomenSubfolder) return;
+
+  if (normalizedPath.endsWith('men.html') || normalizedPath.endsWith('index.html')) return;
+
+  const pageFilename = normalizedPath.substring(normalizedPath.lastIndexOf('/') + 1);
+  const heroH1 = document.querySelector('.hero-text h1') || document.querySelector('h1');
+  const heroImg = document.querySelector('.hero-img img') || document.querySelector('.hero-split img');
+
+  if (heroH1 && heroImg) {
+    const styleName = heroH1.textContent.trim();
+    const gender = isMenSubfolder ? 'Men' : 'Women';
+    const folder = isMenSubfolder ? 'men' : 'women';
+    const relativeImg = heroImg.getAttribute('src');
+
+    addRecentlyViewed({
+      id: `${gender.toLowerCase()}-${styleName.toLowerCase()}`,
+      name: `${gender}'s ${styleName} Ensemble`,
+      category: `${gender} · ${styleName}`,
+      image: `${folder}/${relativeImg.replace(/^\.\//, '')}`,
+      url: `${folder}/${pageFilename}`
+    });
+  }
+}
+
+/**
+ * Enables clicking on outfit cards to track them into Recently Viewed
+ */
+function initOutfitCardTracking() {
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.wishlist-btn')) return;
+
+      const img = card.querySelector('img');
+      const cap = card.querySelector('.card-cap') || card.querySelector('h3') || card.querySelector('h4');
+      const name = cap ? cap.textContent.trim() : (img ? img.alt : 'Curated Look');
+      const imgSrc = img ? img.getAttribute('src') : '';
+
+      const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+      const isMen = normalizedPath.includes('/men/');
+      const isWomen = normalizedPath.includes('/women/');
+      const folder = isMen ? 'men' : (isWomen ? 'women' : '');
+      const gender = isMen ? 'Men' : (isWomen ? 'Women' : 'Editorial');
+
+      let resolvedImg = imgSrc;
+      if (folder && !imgSrc.startsWith('http') && !imgSrc.startsWith(folder + '/')) {
+        resolvedImg = folder + '/' + imgSrc.replace(/^\.\//, '');
+      }
+
+      const pageFilename = normalizedPath.substring(normalizedPath.lastIndexOf('/') + 1);
+      const pageUrl = folder ? `${folder}/${pageFilename}` : pageFilename;
+
+      addRecentlyViewed({
+        id: 'card-' + name.toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 20),
+        name: name,
+        category: `${gender} · Look`,
+        image: resolvedImg,
+        url: pageUrl
+      });
+      showToast(`Added "${name}" to Recently Viewed.`, '✦');
+    });
+  });
+}
+
+/**
+ * Helper to track when a user clicks on a Trending or Featured item
+ */
+function trackTrendingClick(id, name, category, image, url) {
+  addRecentlyViewed({
+    id: id,
+    name: name,
+    category: category,
+    image: image,
+    url: url
+  });
+
+  if (url && url !== '#') {
+    const normalizedPath = window.location.pathname.replace(/\\/g, '/');
+    const isInSubfolder = normalizedPath.includes('/men/') || normalizedPath.includes('/women/');
+    const dest = isInSubfolder ? '../' + url : url;
+    window.location.href = dest;
+  }
+}
+
+/**
+ * Renders Recently Viewed section on any page having #recently-viewed-container
+ */
+function renderRecentlyViewed() {
+  const container = document.getElementById("recently-viewed-container");
+  if (!container) return;
+
+  const items = getRecentlyViewed();
+  const wishlist = getWishlist();
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="recently-viewed-empty">
+        <p>No recently viewed outfits yet. Explore our curated collections to build your browsing history.</p>
+        <div class="recently-viewed-empty-links">
+          <a href="${resolvePath('men/men.html')}">Explore Men's Edit &rarr;</a>
+          <a href="${resolvePath('women/index.html')}">Explore Women's Edit &rarr;</a>
+        </div>
+      </div>
+    `;
+    const clearBtn = document.getElementById("btnClearRecent");
+    if (clearBtn) clearBtn.style.display = "none";
+    return;
+  }
+
+  const clearBtn = document.getElementById("btnClearRecent");
+  if (clearBtn) clearBtn.style.display = "inline-block";
+
+  container.innerHTML = `
+    <div class="recently-grid">
+      ${items.map(item => {
+        const isSaved = wishlist.some(w => w.name === item.name || w.id === item.id);
+        const resolvedImg = resolvePath(item.image);
+        const resolvedUrl = resolvePath(item.url);
+
+        return `
+          <div class="recent-card">
+            <div class="recent-img-wrap">
+              <a href="${resolvedUrl}">
+                <img src="${resolvedImg}" alt="${item.name}" loading="lazy">
+              </a>
+              <button class="wishlist-btn ${isSaved ? 'active is-saved' : ''}" 
+                onclick="event.stopPropagation(); toggleWishlist(this, '${item.id}', '${item.name}', '${item.image}', '${item.category}')"
+                title="Save to Wishlist">
+                ${isSaved ? '♥' : '♡'}
+              </button>
+            </div>
+            <div class="recent-info">
+              <span class="recent-tag">${item.category}</span>
+              <h4 class="serif"><a href="${resolvedUrl}">${item.name}</a></h4>
+              <a href="${resolvedUrl}" class="recent-link">View Look &rarr;</a>
+            </div>
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
+}

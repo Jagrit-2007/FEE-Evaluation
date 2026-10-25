@@ -1,0 +1,10 @@
+[
+  {
+    "id": "usr-1",
+    "name": "Jagrit Bansal",
+    "email": "demo@elossence.com",
+    "password": "password123",
+    "role": "Inner Circle Member",
+    "registeredAt": "2026-10-25"
+  }
+]
